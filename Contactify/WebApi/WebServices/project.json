@@ -9,7 +9,8 @@
     "NETStandard.Library": "1.6.1",
     "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.1.1",
     "DatabaseEntities": "1.0.0-*",
-    "DataTransferObjects": "1.0.0-*"
+    "DataTransferObjects": "1.0.0-*",
+    "Repository": "1.0.0-*"
   },
   "frameworks": {
     "netcoreapp1.0": {

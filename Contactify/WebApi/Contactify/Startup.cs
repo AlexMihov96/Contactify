@@ -11,6 +11,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
+using Repository;
+using Repository.Interfaces;
 using WebServices.Interfaces;
 using WebServices.Services;
 
@@ -18,12 +20,8 @@ namespace Contactify
 {
     public partial class Startup
     {
-        private readonly IHostingEnvironment env;
-
         public Startup(IHostingEnvironment env)
         {
-            this.env = env;
-
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
@@ -59,6 +57,7 @@ namespace Contactify
 
             services.AddSingleton(this.Configuration);
 
+            services.AddScoped<IContactifyData, ContactifyData>();
             services.AddScoped<IAccountService, AccountService>();
 
             services.Configure<MvcOptions>(options =>

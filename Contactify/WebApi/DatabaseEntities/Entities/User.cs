@@ -19,7 +19,7 @@ namespace DatabaseEntities.Entities
         [StringLength(100),EmailAddress]
         public string Email { get; set; }
 
-        [MaxLength(1000)]
+        [MaxLength(10000)]
         public string ProfilePicture { get; set; }
 
         [Required]

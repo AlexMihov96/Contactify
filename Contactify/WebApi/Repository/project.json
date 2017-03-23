@@ -12,7 +12,8 @@
     "Microsoft.EntityFrameworkCore.SqlServer.Design": "1.1.1",
     "Microsoft.EntityFrameworkCore.Design": "1.1.1",
     "Microsoft.EntityFrameworkCore.Tools": "1.1.0",
-    "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.1.1"
+    "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.1.1",
+    "DatabaseEntities": "1.0.0-*"
   },
   "frameworks": {
     "netcoreapp1.0": {

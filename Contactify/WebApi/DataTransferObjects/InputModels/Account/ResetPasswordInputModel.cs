@@ -1,4 +1,4 @@
-﻿namespace DataTransferObjects.InputModels
+﻿namespace DataTransferObjects.InputModels.Account
 {
     public class ResetPasswordInputModel
     {
