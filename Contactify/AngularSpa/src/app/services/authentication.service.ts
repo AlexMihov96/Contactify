@@ -9,6 +9,7 @@ import {Router} from '@angular/router';
 import {ITokenResult} from "../models/view-models/token-result";
 import {IUserInfoResult} from "../models/view-models/user-info-result";
 import {JwtHelper} from "angular2-jwt";
+import {Modal} from "angular2-modal/plugins/bootstrap";
 
 @Injectable()
 
@@ -29,8 +30,9 @@ export class AuthenticationService extends BaseService {
   constructor(private http: Http,
               private settingsService: SettingsService,
               private localStorageService: LocalStorageService,
-              private router: Router) {
-    super()
+              private router: Router,
+              modal: Modal) {
+    super(modal)
     this.userChanged = new EventEmitter<IUserInfoResult>();
     this.showMenu = new EventEmitter<any>();
   }

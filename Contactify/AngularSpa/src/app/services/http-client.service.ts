@@ -39,25 +39,6 @@ export class HttpClient {
       .catch(error => {
         return this.baseService.handleError(error)
       })
-
-  }
-
-  getExcel(url, data, isAuthorized = false) {
-
-    if (isAuthorized == true) {
-      if (!this.tokenVerifier.checkTokenExpiration()) {
-        return Observable.empty()
-      }
-
-      this.headers = this.authService.createAuthHeaders({
-        'Content-Type': 'application/json'
-      })
-    }
-
-    return this.http.post(this.settingsService.apiBaseUrl + url, data, {responseType: 2, headers: this.headers})
-      .catch(error => {
-        return this.baseService.handleError(error)
-      })
   }
 
   post(url, data, isAuthorized = false) {
@@ -85,34 +66,7 @@ export class HttpClient {
       })
   }
 
-  put(url, data, isAuthorized = false) {
-
-    if (isAuthorized == true) {
-      if (!this.tokenVerifier.checkTokenExpiration()) {
-        return Observable.empty()
-      }
-
-      this.headers = this.authService.createAuthHeaders({
-        'Content-Type': 'application/json'
-      })
-    } else {
-      this.headers = new Headers({
-        "Content-Type": "application/json",
-        Accept: "application/json"
-      });
-    }
-
-    let options = new RequestOptions({headers: this.headers})
-    options.method = 'PUT'
-
-    return this.http.put(`${this.settingsService.apiBaseUrl}${url}`, data, options)
-      .catch(error => {
-        return this.baseService.handleError(error);
-      })
-  }
-
   delete(url, data, isAuthorized = false) {
-
     if (isAuthorized == true) {
       if (!this.tokenVerifier.checkTokenExpiration()) {
         return Observable.empty();
