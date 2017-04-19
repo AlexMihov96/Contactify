@@ -16,10 +16,10 @@ export class SettingsService {
       //  this.appBaseUrl = "/";
 
     } else {
-      this.apiBaseUrl = 'http://localhost:50912/api/';
+      this.apiBaseUrl = 'http://localhost:57901/api/';
       this.appBaseUrl = 'http://localhost:4200/';
     }
-    this.tokenStorageKey = 'vacation-token';
+    this.tokenStorageKey = 'contactify-token';
     this.userStorageKey = 'user-info';
   }
 }

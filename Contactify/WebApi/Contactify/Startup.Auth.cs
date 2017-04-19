@@ -3,25 +3,25 @@ using System.Security.Claims;
 using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
-using DatabaseEntities.Entities;
+using Contactify.Entities.Models;
+using Contactify.Security.TokenProvider;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using Security.TokenProvider;
 
 namespace Contactify
 {
     public partial class Startup
     {
         private static readonly string secretKey = "mysupersecret_secretkey!123";
-        private UserManager<User> userManager;
-        private SignInManager<User> signInManager;
+        private UserManager<ApplicationUser> userManager;
+        private SignInManager<ApplicationUser> signInManager;
 
         private void ConfigureAuth(IApplicationBuilder app)
         {
-            this.userManager = app.ApplicationServices.GetRequiredService<UserManager<User>>();
-            this.signInManager = app.ApplicationServices.GetRequiredService<SignInManager<User>>();
+            this.userManager = app.ApplicationServices.GetRequiredService<UserManager<ApplicationUser>>();
+            this.signInManager = app.ApplicationServices.GetRequiredService<SignInManager<ApplicationUser>>();
 
             var signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secretKey));
 
