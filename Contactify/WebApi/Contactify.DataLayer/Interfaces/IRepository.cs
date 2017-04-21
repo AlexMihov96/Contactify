@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Contactify.Entities;
 
-namespace Repository.Interfaces
+namespace Contactify.DataLayer.Interfaces
 {
     public interface IRepository<T>
     {

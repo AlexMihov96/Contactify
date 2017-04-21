@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Contactify.DataLayer;
+using Contactify.DataLayer.Interfaces;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -7,15 +9,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Contactify.Entities;
 using Contactify.Entities.Models;
-using Contactify.Services;
 using Contactify.Services.Interfaces;
 using Contactify.Services.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Cors.Internal;
 using Newtonsoft.Json.Serialization;
-using Repository;
-using Repository.Interfaces;
 
 namespace Contactify
 {
@@ -41,7 +40,15 @@ namespace Contactify
             services.AddDbContext<ContactifyContext>(options =>
                 options.UseSqlServer(this.Configuration.GetConnectionString("ContactifyConnection")));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+            services.AddIdentity<ApplicationUser, IdentityRole>(config =>
+                {
+                    config.User.RequireUniqueEmail = true;
+                    config.Password.RequiredLength = 6;
+                    config.Password.RequireDigit = false;
+                    config.Password.RequireLowercase = false;
+                    config.Password.RequireNonAlphanumeric = false;
+                    config.Password.RequireUppercase = false;
+                })
                 .AddEntityFrameworkStores<ContactifyContext>()
                 .AddDefaultTokenProviders();
 
@@ -51,10 +58,10 @@ namespace Contactify
 
             // Add application services.
             services.AddSingleton(this.Configuration);
+            services.AddSingleton<IAccountService, AccountService>();
 
             services.AddScoped<SignInManager<ApplicationUser>, SignInManager<ApplicationUser>>();
             services.AddScoped<IContactifyData, ContactifyData>();
-            services.AddScoped<IAccountService, AccountService>();
 
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
@@ -74,10 +81,12 @@ namespace Contactify
                             .AllowAnyHeader();
                     });
             });
+
+            services.AddTransient<IDatabaseInitializer, DatabaseInitializer>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IDatabaseInitializer databaseInitializer)
         {
             app.UseCors("AllowAllOrigins");
 
@@ -93,6 +102,8 @@ namespace Contactify
             this.ConfigureAuth(app);
 
             // Add external authentication middleware below. To configure them please see https://go.microsoft.com/fwlink/?LinkID=532715
+
+            databaseInitializer.Seed().GetAwaiter().GetResult();
 
             app.UseMvc(config =>
             {

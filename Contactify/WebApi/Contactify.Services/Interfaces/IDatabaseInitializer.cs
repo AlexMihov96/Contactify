@@ -2,8 +2,8 @@
 
 namespace Contactify.Services.Interfaces
 {
-    public interface ISmsSender
+    public interface IDatabaseInitializer
     {
-        Task SendSmsAsync(string number, string message);
+        Task Seed();
     }
 }

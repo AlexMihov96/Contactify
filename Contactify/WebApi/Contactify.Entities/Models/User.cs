@@ -16,6 +16,14 @@ namespace Contactify.Entities.Models
         public string Lastname { get; set; }
 
         [Required]
+        [MaxLength(100)]
+        public string FullName { get; set; }
+
+        [Required]
+        [MaxLength(50)]
+        public string Username { get; set; }
+
+        [Required]
         [StringLength(100), EmailAddress]
         public string Email { get; set; }
 

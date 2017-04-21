@@ -1,6 +1,6 @@
 ﻿using Contactify.Entities.Models;
 
-namespace Repository.Interfaces
+namespace Contactify.DataLayer.Interfaces
 {
     public interface IContactifyData
     {

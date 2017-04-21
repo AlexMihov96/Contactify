@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
-using Repository.Interfaces;
+using Contactify.DataLayer.Interfaces;
 using Contactify.Entities;
 using Contactify.Entities.Models;
+using Microsoft.EntityFrameworkCore;
 
-namespace Repository
+namespace Contactify.DataLayer
 {
     public class ContactifyData : IContactifyData
     {

@@ -14,7 +14,9 @@ namespace Contactify
 {
     public partial class Startup
     {
+        // this is temporarily
         private static readonly string secretKey = "mysupersecret_secretkey!123";
+
         private UserManager<ApplicationUser> userManager;
         private SignInManager<ApplicationUser> signInManager;
 
@@ -74,6 +76,7 @@ namespace Contactify
             //        SecurityAlgorithms.HmacSha256,
             //        tokenValidationParameters)
             //});
+
         }
 
         private async Task<ClaimsIdentity> GetIdentity(string username, string password)
@@ -89,6 +92,8 @@ namespace Contactify
             }
 
             return null;
+
         }
     }
 }
+

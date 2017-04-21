@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Contactify.Services
+namespace Contactify.Services.Interfaces
 {
     // This class is used by the application to send Email and SMS
     // when you turn on two-factor authentication in ASP.NET Identity.

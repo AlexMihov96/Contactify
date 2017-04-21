@@ -4,6 +4,9 @@ using Microsoft.Extensions.Options;
 
 namespace Contactify.Security.TokenProvider
 {
+    /// <summary>
+    /// Adds a token generation endpoint to an application pipeline.
+    /// </summary>
     public static class TokenProviderAppBuilderExtensions
     {
         /// <summary>

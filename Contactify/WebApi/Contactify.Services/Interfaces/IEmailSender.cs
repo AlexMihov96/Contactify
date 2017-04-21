@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Contactify.Services
+namespace Contactify.Services.Interfaces
 {
     public interface IEmailSender
     {

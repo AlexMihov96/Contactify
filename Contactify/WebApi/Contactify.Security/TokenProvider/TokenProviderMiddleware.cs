@@ -92,7 +92,7 @@ namespace Contactify.Security.TokenProvider
                 new Claim(JwtRegisteredClaimNames.Iat, ToUnixEpochDate(now).ToString(), ClaimValueTypes.Integer64),
                 new Claim("id", id),
                 new Claim("role", userRole),
-                new Claim("userFullName", currentUser.User.Firstname),
+                new Claim("userFullName", currentUser.User.FullName),
             };
 
             // Create the JWT and write it to a string

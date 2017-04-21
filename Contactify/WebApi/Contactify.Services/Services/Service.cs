@@ -1,7 +1,7 @@
 ﻿using System;
+using Contactify.DataLayer.Interfaces;
 using Contactify.Entities.Models;
 using Microsoft.AspNetCore.Identity;
-using Repository.Interfaces;
 
 namespace Contactify.Services.Services
 {

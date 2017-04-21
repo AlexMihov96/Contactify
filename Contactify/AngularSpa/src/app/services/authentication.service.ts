@@ -2,17 +2,16 @@ import {Injectable, EventEmitter} from '@angular/core';
 import {Http, Headers, Response, RequestOptions} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
+import {Modal} from 'angular2-modal/plugins/bootstrap';
 import {SettingsService} from './settings.service';
 import {LocalStorageService} from './local-storage.service';
 import {BaseService} from './base.service';
 import {Router} from '@angular/router';
+import {JwtHelper} from 'angular2-jwt';
 import {ITokenResult} from "../models/view-models/token-result";
 import {IUserInfoResult} from "../models/view-models/user-info-result";
-import {JwtHelper} from "angular2-jwt";
-import {Modal} from "angular2-modal/plugins/bootstrap";
 
 @Injectable()
-
 export class AuthenticationService extends BaseService {
 
   redirectUrl: string;
@@ -63,7 +62,6 @@ export class AuthenticationService extends BaseService {
       let userId = decodedToken['id'];
       let userRole = decodedToken['role'];
       let userFullName = decodedToken['userFullName'];
-      let readHandbook = decodedToken['readHandbook'];
       this.userInfo = {
         id: userId,
         role: userRole,
@@ -84,7 +82,7 @@ export class AuthenticationService extends BaseService {
     this.redirectUrl = '';
   }
 
-  public createAuthHeaders(headers?: { [name: string]: any }): Headers {
+  public createAuthHeaders(headers?: {[name: string]: any}): Headers {
     let authHeaders = new Headers();
 
     if (headers) {

@@ -1,9 +1,9 @@
 ﻿using System.Linq;
-using Repository.Interfaces;
+using Contactify.DataLayer.Interfaces;
 using Contactify.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Repository
+namespace Contactify.DataLayer
 {
     public class Repository<T> : IRepository<T> where T : class
     {

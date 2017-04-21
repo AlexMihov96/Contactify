@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <Folder Include="Enums\" />
-    <Folder Include="InputModels\" />
     <Folder Include="ViewModels\" />
   </ItemGroup>
 

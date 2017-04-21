@@ -7,6 +7,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Contactify.DataLayer\Contactify.DataLayer.csproj" />
     <ProjectReference Include="..\Contactify.Entities\Contactify.Entities.csproj" />
+    <ProjectReference Include="..\Contactify.DataTransferObjects\Contactify.DataTransferObjects.csproj" />
   </ItemGroup>
 
   <ItemGroup>
