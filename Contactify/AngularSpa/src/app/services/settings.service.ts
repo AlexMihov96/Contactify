@@ -16,7 +16,7 @@ export class SettingsService {
       //  this.appBaseUrl = "/";
 
     } else {
-      this.apiBaseUrl = 'http://localhost:57901/api/';
+      this.apiBaseUrl = 'http://localhost:50452/api/';
       this.appBaseUrl = 'http://localhost:4200/';
     }
     this.tokenStorageKey = 'contactify-token';

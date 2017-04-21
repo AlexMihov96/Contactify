@@ -3,3 +3,7 @@
 body {
   font-family: BlinkMacSystemFont;
 }
+
+.margin-bot-10{
+  margin-bottom: 10px;
+}

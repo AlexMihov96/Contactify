@@ -32,10 +32,10 @@ export class LoginComponent {
               router: Router,
               private localStorageService: LocalStorageService,
               private settingsService: SettingsService,
-              // modal: Modal,
+              modal: Modal,
               private baseService: BaseService,
               private ref: ChangeDetectorRef) {
-
+    
     this.setAuthenticationService = authenticationService
     this.setRouter = router
   }

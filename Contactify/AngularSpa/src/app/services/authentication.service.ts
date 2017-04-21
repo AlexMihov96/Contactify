@@ -37,7 +37,6 @@ export class AuthenticationService extends BaseService {
   }
 
   public login(username, password): Observable<ITokenResult> {
-
     let headers = new Headers({
       "Content-Type": "application/x-www-form-urlencoded",
       Accept: "application/x-www-form-urlencoded"
@@ -82,7 +81,7 @@ export class AuthenticationService extends BaseService {
     this.redirectUrl = '';
   }
 
-  public createAuthHeaders(headers?: {[name: string]: any}): Headers {
+  public createAuthHeaders(headers?: { [name: string]: any }): Headers {
     let authHeaders = new Headers();
 
     if (headers) {

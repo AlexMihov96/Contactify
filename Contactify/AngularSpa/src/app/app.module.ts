@@ -1,7 +1,9 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
+import {ModalModule} from 'angular2-modal';
+import {BootstrapModalModule} from 'angular2-modal/plugins/bootstrap';
 
 import {AppComponent} from './app.component';
 import {RouterModule} from "@angular/router";
@@ -19,6 +21,7 @@ import {
   LoginComponent
 }
   from "./components/index";
+import {AuthGuard} from "./guards/index";
 
 @NgModule({
   declarations: [
@@ -31,6 +34,8 @@ import {
     HttpModule,
     RouterModule,
     ReactiveFormsModule,
+    ModalModule.forRoot(),
+    BootstrapModalModule,
     routing
   ],
   providers: [
@@ -39,7 +44,8 @@ import {
     HttpClient,
     LocalStorageService,
     SettingsService,
-    TokenVerifier
+    TokenVerifier,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
