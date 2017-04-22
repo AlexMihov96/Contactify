@@ -1,9 +1,9 @@
 @import "../../app/app.component.css";
 
 body {
-  font-family: BlinkMacSystemFont;
+  font-family: "Raleway SemiBold";
 }
 
-.margin-bot-10{
+.margin-bot-10 {
   margin-bottom: 10px;
 }

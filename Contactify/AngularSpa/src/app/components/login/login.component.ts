@@ -64,7 +64,7 @@ export class LoginComponent extends BaseComponent {
         },
         error => {
           if (error !== Resources.invalidCredentials) {
-            this.baseService.showAlert(Resources.oops);
+            this.baseService.displayError(Resources.oops);
           }
           else {
             this.loginError = Resources.invalidCredentials
@@ -77,7 +77,4 @@ export class LoginComponent extends BaseComponent {
     this.getAuthenticationService.logout()
     this.getRouter.navigate(['login'])
   }
-  // test(){
-  //   this.baseService.showSuccessInfo('You have successfully logged')
-  // }
 }

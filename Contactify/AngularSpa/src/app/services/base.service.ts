@@ -13,68 +13,65 @@ export class BaseService {
   constructor(private modal: Modal) {
   }
 
-  public showAlert(error: any) {
+  public displayError(error: any) {
     this.modal.alert()
       .size('sm')
-      .headerClass('modal-alert-header')
-      .footerClass('modal-alert-footer')
+      .title('Oh snap!')
       .isBlocking(true)
+      .okBtnClass("hidden")
       .body(error)
+      .headerClass('modal-error-header')
+      .bodyClass('modal-body')
+      .footerClass('modal-footer')
       .open()
-      .then(() => this.isShown = true);
+      .then(dialog => setTimeout(function () {
+        dialog.dismiss()
+      }, 2000)), this.isShown = true
   }
 
-  public showSuccessConfirm(message: any) {
+  public displayWarning(message: any) {
     this.modal.alert()
       .size('sm')
+      .title('Try Again :)')
       .isBlocking(true)
-      .headerClass('modal-success-header')
-      .footerClass('modal-success-footer')
+      .okBtnClass("hidden")
       .body(message)
+      .headerClass('modal-warning-header')
+      .bodyClass('modal-body')
+      .footerClass('modal-footer')
       .open()
-      .then(() => this.isShown = true)
+      .then(dialog => setTimeout(function () {
+        dialog.dismiss()
+      }, 2000)), this.isShown = true
   }
 
-  public showSuccessInfo(message: any) {
+  public displaySuccess(message: any) {
     this.modal.alert()
       .size('sm')
+      .title('Awesome!')
       .isBlocking(false)
+      .okBtnClass("hidden")
+      .body(message)
       .headerClass('modal-success-header')
-      .footerClass('modal-success-footer')
-      .body(message)
-      .okBtnClass("hidden")
-      .open()
-      .then(dialog => setTimeout(function () {
-        dialog.dismiss()
-      }, 2000)), this.isShown = true
-
-  }
-
-  public  showWarning(message: any) {
-    this.modal.alert()
-      .size('sm')
-      .isBlocking(true)
-      .headerClass('modal-warrning-header')
-      .footerClass('modal-warrning-footer')
-      .body(message)
-      .okBtnClass("hidden")
+      .bodyClass('modal-body')
+      .footerClass('modal-footer')
       .open()
       .then(dialog => setTimeout(function () {
         dialog.dismiss()
       }, 2000)), this.isShown = true
   }
 
-  public confirmDeletion(message: any): Promise<DialogRef<TwoButtonPreset>> {
-    return this.modal.confirm()
-      .size('sm')
-      .headerClass('modal-alert-header')
-      .footerClass('modal-alert-footer')
-      .isBlocking(true)
-      .body(message)
-      .okBtn('Yes')
-      .cancelBtn('No')
-      .open();
-  }
+  // public confirmDeletion(message: any): Promise<DialogRef<TwoButtonPreset>> {
+  //   return this.modal.confirm()
+  //     .size('sm')
+  //     .headerClass('modal-alert-header')
+  //     .footerClass('modal-alert-footer')
+  //     .isBlocking(true)
+  //     .body(message)
+  //     .okBtn('Yes')
+  //     .cancelBtn('No')
+  //     .open();
+  // }
 
   public handleError(error: any) {
     if (!this.isShown) {

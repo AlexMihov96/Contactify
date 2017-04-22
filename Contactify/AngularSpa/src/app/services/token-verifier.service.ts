@@ -10,7 +10,8 @@ import {BaseService} from "./base.service";
 export class TokenVerifierService extends BaseService {
   constructor(private router: Router,
               private authService: AuthenticationService,
-              modal: Modal) {
+              modal: Modal,
+              private baseService: BaseService) {
     super(modal)
   }
 
@@ -19,7 +20,7 @@ export class TokenVerifierService extends BaseService {
 
     if (!isValid) {
       this.authService.logout()
-      this.showAlert(Resources.sessionExpired);
+      this.baseService.displayError(Resources.sessionExpired);
       this.router.navigate(['login'])
 
       return false
