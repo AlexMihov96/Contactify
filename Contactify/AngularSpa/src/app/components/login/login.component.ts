@@ -1,32 +1,23 @@
-// import {Component} from "@angular/core";
-//
-// @Component({
-//   templateUrl: 'login.component.html',
-//   styleUrls: ['login.css']
-// })
-//
-// export class LoginComponent {
-//
-// }
-
-import {Component, ChangeDetectorRef} from '@angular/core';
-import {Router} from '@angular/router';
 import {Modal} from 'angular2-modal/plugins/bootstrap';
+import {ChangeDetectorRef, Component} from "@angular/core";
+import {BaseComponent} from "../base.component";
 import {AuthenticationService} from "../../services/authentication.service";
+import {Router} from "@angular/router";
 import {LocalStorageService} from "../../services/local-storage.service";
 import {SettingsService} from "../../services/settings.service";
 import {BaseService} from "../../services/base.service";
 import {ITokenResult} from "../../models/view-models/token-result";
+import {Resources} from "../../constants/resources-en";
 
 @Component({
   templateUrl: './login.component.html'
 })
 
-export class LoginComponent {
+export class LoginComponent extends BaseComponent {
   private model: any = {}
   private authenticationService: AuthenticationService
   private router: Router
-  private loginError;
+  private loginError
 
   constructor(authenticationService: AuthenticationService,
               router: Router,
@@ -35,7 +26,8 @@ export class LoginComponent {
               modal: Modal,
               private baseService: BaseService,
               private ref: ChangeDetectorRef) {
-    
+    super(modal)
+
     this.setAuthenticationService = authenticationService
     this.setRouter = router
   }
@@ -71,11 +63,11 @@ export class LoginComponent {
           this.ref.markForCheck();
         },
         error => {
-          if (error !== "Invalid username or password.") {
-            this.baseService.showAlert('Oops! Something went wrong');
+          if (error !== Resources.invalidCredentials) {
+            this.baseService.showAlert(Resources.oops);
           }
           else {
-            this.loginError = "Invalid username or password."
+            this.loginError = Resources.invalidCredentials
           }
           this.ref.markForCheck();
         })
@@ -85,4 +77,7 @@ export class LoginComponent {
     this.getAuthenticationService.logout()
     this.getRouter.navigate(['login'])
   }
+  // test(){
+  //   this.baseService.showSuccessInfo('You have successfully logged')
+  // }
 }

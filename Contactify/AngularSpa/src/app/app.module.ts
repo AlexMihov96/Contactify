@@ -1,32 +1,34 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
-import {ModalModule} from 'angular2-modal';
-import {BootstrapModalModule} from 'angular2-modal/plugins/bootstrap';
-
-import {AppComponent} from './app.component';
+import {NgModule} from "@angular/core";
+import {BrowserModule} from "@angular/platform-browser";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {HttpModule} from "@angular/http";
 import {RouterModule} from "@angular/router";
+import {BootstrapModalModule} from "angular2-modal/plugins/bootstrap";
+import {AppComponent} from "./app.component";
+import {ModalModule} from "angular2-modal";
+
 import {routing} from "./app.routing";
 import {
-  AuthenticationService,
-  BaseService,
-  HttpClient,
-  LocalStorageService,
-  SettingsService,
-  TokenVerifier
-} from './services/index'
+  LoginComponent
+} from './components/index'
 
 import {
-  LoginComponent
-}
-  from "./components/index";
-import {AuthGuard} from "./guards/index";
+  AuthenticationService,
+  TokenVerifierService,
+  BaseService,
+  SettingsService,
+  LocalStorageService,
+  HttpClient
+} from "./services/index";
+
+import {
+  AuthGuard
+} from "./guards/index";
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -39,15 +41,16 @@ import {AuthGuard} from "./guards/index";
     routing
   ],
   providers: [
-    BaseService,
     AuthenticationService,
     HttpClient,
     LocalStorageService,
     SettingsService,
-    TokenVerifier,
-    AuthGuard
+    TokenVerifierService,
+    BaseService,
+    AuthGuard,
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule {
 }

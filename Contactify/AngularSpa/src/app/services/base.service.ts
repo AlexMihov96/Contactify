@@ -1,6 +1,8 @@
-import {Observable} from "rxjs";
 import {Injectable} from "@angular/core";
-import {Modal, TwoButtonPreset} from "angular2-modal/plugins/bootstrap";
+import {Subscription} from "rxjs";
+import {Modal, TwoButtonPreset} from 'angular2-modal/plugins/bootstrap';
+import {Observable} from "rxjs/Observable";
+import {Resources} from "../constants/resources-en";
 import {DialogRef} from "angular2-modal";
 
 @Injectable()
@@ -11,22 +13,7 @@ export class BaseService {
   constructor(private modal: Modal) {
   }
 
-  handleError(error: any) {
-    if (!this.isShown) {
-      if (error.status == 0 || error._body == '') {
-
-        return Observable.throw('<div class="my-modal-body">Oops! Something went wrong.</div>')
-      } else {
-        return Observable.throw(error._body)
-      }
-    }
-  }
-
-  catchError(error: any) {
-    return Observable.throw(error)
-  }
-
-  showAlert(error: any) {
+  public showAlert(error: any) {
     this.modal.alert()
       .size('sm')
       .headerClass('modal-alert-header')
@@ -37,7 +24,7 @@ export class BaseService {
       .then(() => this.isShown = true);
   }
 
-  showSuccessConfirm(message: any) {
+  public showSuccessConfirm(message: any) {
     this.modal.alert()
       .size('sm')
       .isBlocking(true)
@@ -48,7 +35,7 @@ export class BaseService {
       .then(() => this.isShown = true)
   }
 
-  showSuccessInfo(message: any) {
+  public showSuccessInfo(message: any) {
     this.modal.alert()
       .size('sm')
       .isBlocking(false)
@@ -63,7 +50,7 @@ export class BaseService {
 
   }
 
-  showWarning(message: any) {
+  public  showWarning(message: any) {
     this.modal.alert()
       .size('sm')
       .isBlocking(true)
@@ -77,7 +64,7 @@ export class BaseService {
       }, 2000)), this.isShown = true
   }
 
-  confirmDeletion(message: any): Promise<DialogRef<TwoButtonPreset>> {
+  public confirmDeletion(message: any): Promise<DialogRef<TwoButtonPreset>> {
     return this.modal.confirm()
       .size('sm')
       .headerClass('modal-alert-header')
@@ -87,5 +74,20 @@ export class BaseService {
       .okBtn('Yes')
       .cancelBtn('No')
       .open();
+  }
+
+  public handleError(error: any) {
+    if (!this.isShown) {
+      if (error.status == 0 || error._body == '') {
+
+        return Observable.throw(Resources.oops)
+      } else {
+        return Observable.throw(error._body)
+      }
+    }
+  }
+
+  protected catchError(error: any) {
+    return Observable.throw(error)
   }
 }

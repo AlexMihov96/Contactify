@@ -5,6 +5,7 @@ import {SettingsService} from '../services/settings.service';
 import {LocalStorageService} from '../services/local-storage.service';
 
 @Injectable()
+
 export class AuthGuard implements CanActivate {
 
   constructor(private router: Router,
@@ -21,6 +22,7 @@ export class AuthGuard implements CanActivate {
 
   checkLogin(url: string): boolean {
     let isLoggedIn = this.localStorageService.retrieve(this.settingsService.tokenStorageKey, true);
+
     if (isLoggedIn) {
       return true;
     }
@@ -29,6 +31,7 @@ export class AuthGuard implements CanActivate {
     this.authService.redirectUrl = url;
     // Navigate to the login page with extras
     this.router.navigate(['login']);
+
     return false;
   }
 }
