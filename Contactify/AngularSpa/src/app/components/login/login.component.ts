@@ -10,7 +10,8 @@ import {ITokenResult} from "../../models/view-models/token-result";
 import {Resources} from "../../constants/resources-en";
 
 @Component({
-  templateUrl: './login.component.html'
+  templateUrl: './login.component.html',
+  styleUrls: [`./login.component.css`]
 })
 
 export class LoginComponent extends BaseComponent {

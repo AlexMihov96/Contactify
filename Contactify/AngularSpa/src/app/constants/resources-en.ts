@@ -10,7 +10,7 @@ export let Resources = {
   mailError: "The mail can't be sent.",
   loginToAccess: "First, you must logout to access login form.",
   invalidCredentials: "Invalid username or password.",
-  oops: "Oops! Something went wrong.",
+  oops: "Something went wrong.",
   sessionExpired: "Your session was expired. Please, log in again.",
   unauthorized: 'Unauthorized!',
 }

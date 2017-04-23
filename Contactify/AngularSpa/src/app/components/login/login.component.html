@@ -1,44 +1,33 @@
-<!--<div class="container-fluid">-->
-<!--<form>-->
-<!--<div class="col-md-offset-4 col-md-4">-->
-<!--<div class="form-group">-->
-<!--<input type="text" class="form-control margin-bot-10" required placeholder="Username">-->
-<!--<input type="password" class="form-control margin-bot-10" required placeholder="Password">-->
-<!--<input type="submit" class="btn btn-lg btn-block btn-info" value="Sign in">-->
-<!--<a href="#" class="text-info">Forgot Your Password?</a>-->
-<!--</div>-->
-<!--</div>-->
-<!--</form>-->
-<!--</div>-->
+<div class="container-fluid background">
+  <div class="text-center">
+    <label class="text-logo">CONTACTIFY</label>
+  </div>
+  <div class="col-md-offset-4 col-md-4 form-center">
+    <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+      <!--dummy input to disable autofill-->
+      <input type="password" style="width: 0;height: 0; visibility: hidden;position:absolute;left:0;top:0;"/>
 
-<div class="container">
-  <div class="wrapper col-md-offset-4 col-md-4">
-    <div class="row">
-      <h2 class="text-center text-info">Login</h2>
-    </div>
-    <div class="">
-      <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
-          <label class="control-label text-format" for="username">Username</label>
-          <input type="text" class="form-control" name="username" [(ngModel)]="model.username" #username="ngModel"
-                 required/>
-          <div *ngIf="f.submitted && !username.valid" class="help-block error-text-format">Username is required</div>
-        </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
-          <label class="control-label text-format" for="password">Password</label>
-          <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel"
-                 required/>
-          <div *ngIf="f.submitted && !password.valid" class="help-block error-text-format">Password is required</div>
-        </div>
-        <div class="form-group pull-right">
-          <button [disabled]="f.invalid" class="btn btn-primary">Login</button>
-        </div>
-        <div [class.has-error]="loginError && f.submitted">
-          <div *ngIf="loginError"
-               class="help-block">{{loginError}}
-          </div>
-        </div>
-      </form>
-    </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="username"
+               [(ngModel)]="model.username"
+               #username="ngModel" required placeholder="Username">
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control margin-top-30" name="password" placeholder="Password"
+               [(ngModel)]="model.password"
+               #password="ngModel" required/>
+      </div>
+      <div>
+        <input type="submit" class="btn btn-md btn-block btn-primary margin-top-30" value="SIGN IN TO YOUR ACCOUNT">
+      </div>
+      <div class="text-center margin-top-30">
+        <a href="#" class="text-blue">Forgot Your Password?</a>
+      </div>
+    </form>
+  </div>
+  <div>
+    <label class="text-format bottom-position">Don't have an account?
+      <a class="underline text-black" href="#">Sign Up</a>
+    </label>
   </div>
 </div>

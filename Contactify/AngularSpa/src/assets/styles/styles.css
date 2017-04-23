@@ -1,9 +1,85 @@
 @import "../../app/app.component.css";
 
+/*Overide system css classes*/
 body {
   font-family: "Raleway SemiBold";
 }
 
+a:hover, a:visited, a:link, a:active {
+  text-decoration: none;
+}
+
+a:hover {
+  color: #029587;
+}
+
+/*Overide bootstrap classes*/
+.btn:hover {
+  background: #029587;
+  border-color: #029587;
+}
+
+.form-control {
+  box-shadow: none;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+}
+
+.form-control:hover, .form-control:visited, .form-control:link, .form-control:active, .form-control:not(:hover) {
+  box-shadow: none;
+}
+
+/*Custom classes*/
+.margin-top-30 {
+  margin-top: 30px;
+}
+
 .margin-bot-10 {
   margin-bottom: 10px;
+}
+
+.text-blue {
+  color: #00a2d2;
+}
+
+.text-black {
+  color: #434356;
+}
+
+.text-format {
+  font-size: 1.1em;
+  color: #6f6f6f;
+  font-family: "Yu Gothic UI Semibold";
+}
+
+.underline {
+  text-decoration: underline !important;
+}
+
+.form-center {
+  background: #ffffff;
+  border: solid #f1f1f1;
+  width: 600px;
+  height: 300px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  padding: 40px 60px 40px 60px;
+}
+
+.background {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(2, 149, 135, 1);
+  background: -moz-linear-gradient(top, rgba(2, 149, 135, 1) 0%, rgba(2, 149, 135, 1) 49%, rgba(255, 255, 255, 1) 49%, rgba(255, 255, 255, 1) 100%);
+  background: -webkit-linear-gradient(top, rgba(2, 149, 135, 1) 0%, rgba(2, 149, 135, 1) 49%, rgba(255, 255, 255, 1) 49%, rgba(255, 255, 255, 1) 100%);
+  background: -o-linear-gradient(top, rgba(2, 149, 135, 1) 0%, rgba(2, 149, 135, 1) 49%, rgba(255, 255, 255, 1) 49%, rgba(255, 255, 255, 1) 100%);
+  background: -ms-linear-gradient(top, rgba(2, 149, 135, 1) 0%, rgba(2, 149, 135, 1) 49%, rgba(255, 255, 255, 1) 49%, rgba(255, 255, 255, 1) 100%);
+  background: linear-gradient(to bottom, rgba(2, 149, 135, 1) 0%, rgba(2, 149, 135, 1) 49%, rgba(255, 255, 255, 1) 49%, rgba(255, 255, 255, 1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#029587', endColorstr='#ffffff', GradientType=0);
 }
