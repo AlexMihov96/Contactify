@@ -1,13 +1,13 @@
 import {Modal} from 'angular2-modal/plugins/bootstrap';
+import {Resources} from "../../constants/resources-en";
 import {ChangeDetectorRef, Component} from "@angular/core";
 import {BaseComponent} from "../base.component";
-import {AuthenticationService} from "../../services/authentication.service";
+import {AuthenticationService} from "../../services/system-services/authentication.service";
 import {Router} from "@angular/router";
-import {LocalStorageService} from "../../services/local-storage.service";
-import {SettingsService} from "../../services/settings.service";
+import {LocalStorageService} from "../../services/system-services/local-storage.service";
+import {SettingsService} from "../../services/system-services/settings.service";
 import {BaseService} from "../../services/base.service";
-import {ITokenResult} from "../../models/view-models/token-result";
-import {Resources} from "../../constants/resources-en";
+import {ITokenResult} from "../../models/system-models/token-result";
 
 @Component({
   templateUrl: './login.component.html',

@@ -2,8 +2,8 @@
   <div class="text-center">
     <label class="text-logo">CONTACTIFY</label>
   </div>
-  <div class="col-md-offset-4 col-md-4 form-center">
-    <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+  <div class="wrapper col-md-offset-4 col-md-4">
+    <form #form="ngForm" (submit)="login()" novalidate>
       <!--dummy input to disable autofill-->
       <input type="password" style="width: 0;height: 0; visibility: hidden;position:absolute;left:0;top:0;"/>
 
@@ -18,7 +18,7 @@
                #password="ngModel" required/>
       </div>
       <div>
-        <input type="submit" class="btn btn-md btn-block btn-primary margin-top-30" value="SIGN IN TO YOUR ACCOUNT">
+        <input type="submit" [disabled]="form.invalid" class="btn btn-md btn-block btn-primary margin-top-30" value="SIGN IN TO YOUR ACCOUNT">
       </div>
       <div class="text-center margin-top-30">
         <a href="#" class="text-blue">Forgot Your Password?</a>
@@ -27,7 +27,7 @@
   </div>
   <div>
     <label class="text-format bottom-position">Don't have an account?
-      <a class="underline text-black" href="#">Sign Up</a>
+      <a class="underline text-black" routerLink="/register" routerLinkActive="active">Sign Up</a>
     </label>
   </div>
 </div>

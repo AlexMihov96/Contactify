@@ -5,7 +5,7 @@ import {TokenVerifierService} from "./token-verifier.service"
 import {SettingsService} from "./settings.service"
 import {Observable} from "rxjs"
 import {AuthenticationService} from "./authentication.service"
-import {BaseService} from "./base.service";
+import {BaseService} from "../base.service";
 
 @Injectable()
 

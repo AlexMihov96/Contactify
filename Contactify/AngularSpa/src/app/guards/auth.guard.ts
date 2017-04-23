@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
-import {AuthenticationService} from '../services/authentication.service';
-import {SettingsService} from '../services/settings.service';
-import {LocalStorageService} from '../services/local-storage.service';
+import {AuthenticationService} from '../services/system-services/authentication.service';
+import {SettingsService} from '../services/system-services/settings.service';
+import {LocalStorageService} from '../services/system-services/local-storage.service';
 
 @Injectable()
 

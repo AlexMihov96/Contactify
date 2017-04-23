@@ -2,8 +2,8 @@ import {Router} from "@angular/router";
 import {Injectable} from "@angular/core";
 import {AuthenticationService} from "./authentication.service";
 import {Modal} from "angular2-modal/plugins/bootstrap";
-import {Resources} from "../constants/resources-en";
-import {BaseService} from "./base.service";
+import {Resources} from "../../constants/resources-en";
+import {BaseService} from "../base.service";
 
 @Injectable()
 

@@ -9,7 +9,8 @@ import {ModalModule} from "angular2-modal";
 
 import {routing} from "./app.routing";
 import {
-  LoginComponent
+  LoginComponent,
+  RegisterComponent
 } from './components/index'
 
 import {
@@ -18,7 +19,8 @@ import {
   BaseService,
   SettingsService,
   LocalStorageService,
-  HttpClient
+  HttpClient,
+  RegisterService
 } from "./services/index";
 
 import {
@@ -28,7 +30,8 @@ import {
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +51,7 @@ import {
     TokenVerifierService,
     BaseService,
     AuthGuard,
+    RegisterService
   ],
   bootstrap: [AppComponent]
 })

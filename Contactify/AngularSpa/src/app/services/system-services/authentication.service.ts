@@ -7,9 +7,9 @@ import {SettingsService} from './settings.service'
 import {LocalStorageService} from './local-storage.service'
 import {Router} from '@angular/router'
 import {JwtHelper} from 'angular2-jwt'
-import {ITokenResult} from "../models/view-models/token-result"
-import {IUserInfoResult} from "../models/view-models/user-info-result"
-import {BaseService} from "./base.service";
+import {ITokenResult} from "../../models/system-models/token-result"
+import {IUserInfoResult} from "../../models/system-models/user-info-result"
+import {BaseService} from "../base.service";
 
 @Injectable()
 

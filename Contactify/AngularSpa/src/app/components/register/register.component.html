@@ -1,0 +1,40 @@
+<div class="container-fluid background">
+  <div class="wrapper col-md-offset-4 col-md-4">
+    <div class="text-center">
+      <label class="text-format-headers">SIGN UP</label>
+    </div>
+    <form #form="ngForm" (submit)="register(form.value)" novalidate>
+      <!--dummy input to disable autofill-->
+      <input type="password" style="width: 0;height: 0; visibility: hidden;position:absolute;left:0;top:0;"/>
+
+      <div class="form-group">
+        <input type="text" class="form-control" name="username" required
+               [(ngModel)]="userToRegister.username" placeholder="Username">
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" name="password" required
+               [(ngModel)]="userToRegister.password" placeholder="Password">
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" name="confirmPassword" required
+               [(ngModel)]="userToRegister.confirmPassword" placeholder="Confirm Password">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="firstname" required
+               [(ngModel)]="userToRegister.firstname" placeholder="First Name">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="lastname" required
+               [(ngModel)]="userToRegister.lastname" placeholder="Last Name">
+      </div>
+      <div class="form-group">
+        <input type="email" class="form-control" name="email" required
+               [(ngModel)]="userToRegister.email" placeholder="Email">
+      </div>
+      <div class="form-group">
+        <input type="submit" class="btn btn-primary btn-md btn-block margin-top-30"
+               value="SIGN UP NEW ACCOUNT">
+      </div>
+    </form>
+  </div>
+</div>
