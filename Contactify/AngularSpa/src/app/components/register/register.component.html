@@ -32,8 +32,13 @@
                [(ngModel)]="user.email" placeholder="Email">
       </div>
       <div class="form-group">
-        <input type="submit" [disabled]="form.invalid"  class="btn btn-primary btn-md btn-block margin-top-30"
+        <input type="submit" [disabled]="form.invalid" class="btn btn-primary btn-md btn-block margin-top-30"
                value="SIGN UP NEW ACCOUNT">
+      </div>
+      <div class="form-group text-center margin-top-30">
+        <label class="text-format">Already have an account?
+          <a class="underline text-black" routerLink="/login" routerLinkActive="active">Sign In Here</a>
+        </label>
       </div>
     </form>
   </div>
