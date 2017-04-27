@@ -6,13 +6,14 @@ import {RegisterUserInputModel} from "../../models/input-models/register-user.in
 import {AuthenticationService} from "../../services/system-services/authentication.service";
 import {Router} from "@angular/router";
 import {RegisterService} from "../../services/user-services/register.service";
+import {Resources} from "../../constants/resources-en";
 
 @Component({
   templateUrl: './register.component.html'
 })
 
 export class RegisterComponent extends BaseComponent {
-  private userToRegister: RegisterUserInputModel = new RegisterUserInputModel
+  private user: RegisterUserInputModel = new RegisterUserInputModel
 
   constructor(private authService: AuthenticationService,
               private router: Router,
@@ -23,6 +24,14 @@ export class RegisterComponent extends BaseComponent {
   }
 
   private register(form: any): void {
-    this.baseService.displaySuccess(form.username)
+    this.subscriptions.push(this.registerService.register(this.user)
+      .subscribe(resp => {
+          this.baseService.displaySuccess(Resources.successRegister)
+
+          this.router.navigate(['/home'])
+        },
+        error => {
+          this.baseService.displayError(Resources.invalidData)
+        }))
   }
 }

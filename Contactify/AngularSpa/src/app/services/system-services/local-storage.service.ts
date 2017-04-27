@@ -3,7 +3,7 @@ import {Injectable} from "@angular/core"
 @Injectable()
 
 export class LocalStorageService {
-  public retrieve(key: string, session = false): any {
+  public retrieve(key: string, session): any {
     let json = (session ?
       sessionStorage.getItem(key) :
       localStorage.getItem(key))

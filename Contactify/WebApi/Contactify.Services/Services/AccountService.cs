@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Contactify.DataLayer.Interfaces;
 using Contactify.DataTransferObjects.InputModels;
@@ -24,51 +25,80 @@ namespace Contactify.Services.Services
         public ApplicationUser ExtractCurrentUser(ApplicationUser user)
         {
             var currentUser = this.Data.ApplicationUser.Query().Include(u => u.User).FirstOrDefault(u => u.Id == user.Id);
+
             return currentUser;
         }
 
         public async Task<IdentityResult> RegisterUser(RegisterUserInputModel model)
         {
-            //TODO: Profile picture
+            //TODO: Profile picture, response if registration exists
             this.CheckModelForNull(model);
 
-            var user = new ApplicationUser() { UserName = model.Username, Email = model.Email };
-            var result = await this.UserManager.CreateAsync(user, model.Password);
-
-            if (result.Succeeded)
+            if (this.ValidateEmail(model.Email) && this.ValidatePassword(model.Password, model.ConfirmPassword) && this.ValidateUsername(model.Username))
             {
-                var vacationUser = new User()
-                {
-                    Firstname = model.Firstname,
-                    Lastname = model.Lastname,
-                    FullName = $"{model.Firstname} {model.Lastname}",
-                    Username = model.Username,
-                    ProfilePicture = null,
-                    Email = model.Email,
-                    ApplicationUser = user,
-                };
+                var user = new ApplicationUser() { UserName = model.Username, Email = model.Email };
+                var result = await this.UserManager.CreateAsync(user, model.Password);
 
-                this.Data.User.Add(vacationUser);
-                this.Data.SaveChanges();
+                if (result.Succeeded)
+                {
+                    var vacationUser = new User()
+                    {
+                        Firstname = model.Firstname,
+                        Lastname = model.Lastname,
+                        FullName = $"{model.Firstname} {model.Lastname}",
+                        Username = model.Username,
+                        ProfilePicture = null,
+                        Email = model.Email,
+                        ApplicationUser = user
+                    };
+
+                    this.Data.User.Add(vacationUser);
+                    this.Data.SaveChanges();
+
+                    return result;
+                }
+
+                throw new Exception(string.Join("; ", result.Errors));
             }
 
-            return result;
+            throw new Exception("Invalid data.");
         }
 
         public bool ValidateUsername(string username)
         {
-            var isAlreadyTaken = this.Data.ApplicationUser.Query()
-                .FirstOrDefault(u => u.UserName == username);
+            var isUsernameDuplicated = this.Data.User.Query()
+                .Any(u => u.Username == username);
 
-            return isAlreadyTaken != null;
+            if (!isUsernameDuplicated)
+            {
+                return true;
+            }
+            return false;
         }
 
         public bool ValidateEmail(string email)
         {
             var isAlreadyTaken = this.Data.ApplicationUser.Query()
-                .FirstOrDefault(u => u.Email == email);
+                .Any(u => u.Email == email);
 
-            return isAlreadyTaken != null;
+            var isValidEmail = Regex.IsMatch(email,
+                "^(?(\")(\".+?(?<!\\\\)\"@)|(([0-9a-z]((\\.(?!\\.))|[-!#\\$%&\'\\*\\+/=\\?\\^`\\{\\}\\|~\\w])*)(?<=[0-9a-z])@))(?(\\[)(\\[(\\d{1,3}\\.){3}\\d{1,3}\\])|(([0-9a-z][-\\w]*[0-9a-z]*\\.)+[a-z0-9][\\-a-z0-9]{0,22}[a-z0-9]))$");
+
+            if (!isAlreadyTaken && isValidEmail)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool ValidatePassword(string password, string confirmPassword)
+        {
+            if (password == confirmPassword)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

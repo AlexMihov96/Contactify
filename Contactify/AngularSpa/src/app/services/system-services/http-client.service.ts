@@ -6,6 +6,7 @@ import {SettingsService} from "./settings.service"
 import {Observable} from "rxjs"
 import {AuthenticationService} from "./authentication.service"
 import {BaseService} from "../base.service";
+import 'rxjs/Rx'
 
 @Injectable()
 
@@ -26,9 +27,9 @@ export class HttpClient {
 
   get(url, isAuthorized = false) {
     if (isAuthorized == true) {
-      if (!this.tokenVerifier.checkTokenExpiration()) {
-        return Observable.empty()
-      }
+      // if (!this.tokenVerifier.checkTokenExpiration()) {
+      //   return Observable.empty()
+      // }
 
       this.headers = this.authService.createAuthHeaders({
         'Content-Type': 'application/json'
@@ -43,9 +44,9 @@ export class HttpClient {
 
   post(url, data, isAuthorized = false) {
     if (isAuthorized == true) {
-      if (!this.tokenVerifier.checkTokenExpiration()) {
-        return Observable.empty()
-      }
+      // if (!this.tokenVerifier.checkTokenExpiration()) {
+      //   return Observable.empty()
+      // }
 
       this.headers = this.authService.createAuthHeaders({
         'Content-Type': 'application/json'
@@ -68,9 +69,9 @@ export class HttpClient {
 
   delete(url, data, isAuthorized = false) {
     if (isAuthorized == true) {
-      if (!this.tokenVerifier.checkTokenExpiration()) {
-        return Observable.empty()
-      }
+      // if (!this.tokenVerifier.checkTokenExpiration()) {
+      //   return Observable.empty()
+      // }
 
       this.headers = this.authService.createAuthHeaders({
         'Content-Type': 'application/json'
@@ -93,9 +94,9 @@ export class HttpClient {
 
   put(url, data, isAuthorized = false) {
     if (isAuthorized == true) {
-      if (!this.tokenVerifier.checkTokenExpiration()) {
-        return Observable.empty();
-      }
+      // if (!this.tokenVerifier.checkTokenExpiration()) {
+      //   return Observable.empty();
+      // }
 
       this.headers = this.authService.createAuthHeaders({
         'Content-Type': 'application/json'

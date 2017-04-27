@@ -104,7 +104,7 @@ export class AuthenticationService extends BaseService {
   }
 
   public isTheTokenValid(): boolean {
-    let tokenResult: ITokenResult = this.localStorageService.retrieve(this.settingsService.tokenStorageKey, true)
+    let tokenResult: ITokenResult = this.localStorageService.retrieve(this.settingsService.tokenStorageKey, false)
 
     if (tokenResult !== null && tokenResult !== undefined) {
       let expDate = new Date(tokenResult.expires_on)

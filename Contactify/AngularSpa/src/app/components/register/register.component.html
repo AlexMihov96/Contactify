@@ -9,30 +9,30 @@
 
       <div class="form-group">
         <input type="text" class="form-control" name="username" required
-               [(ngModel)]="userToRegister.username" placeholder="Username">
+               [(ngModel)]="user.username" placeholder="Username">
       </div>
       <div class="form-group">
         <input type="password" class="form-control" name="password" required
-               [(ngModel)]="userToRegister.password" placeholder="Password">
+               [(ngModel)]="user.password" placeholder="Password">
       </div>
       <div class="form-group">
         <input type="password" class="form-control" name="confirmPassword" required
-               [(ngModel)]="userToRegister.confirmPassword" placeholder="Confirm Password">
+               [(ngModel)]="user.confirmPassword" placeholder="Confirm Password">
       </div>
       <div class="form-group">
         <input type="text" class="form-control" name="firstname" required
-               [(ngModel)]="userToRegister.firstname" placeholder="First Name">
+               [(ngModel)]="user.firstname" placeholder="First Name">
       </div>
       <div class="form-group">
         <input type="text" class="form-control" name="lastname" required
-               [(ngModel)]="userToRegister.lastname" placeholder="Last Name">
+               [(ngModel)]="user.lastname" placeholder="Last Name">
       </div>
       <div class="form-group">
         <input type="email" class="form-control" name="email" required
-               [(ngModel)]="userToRegister.email" placeholder="Email">
+               [(ngModel)]="user.email" placeholder="Email">
       </div>
       <div class="form-group">
-        <input type="submit" class="btn btn-primary btn-md btn-block margin-top-30"
+        <input type="submit" [disabled]="form.invalid"  class="btn btn-primary btn-md btn-block margin-top-30"
                value="SIGN UP NEW ACCOUNT">
       </div>
     </form>

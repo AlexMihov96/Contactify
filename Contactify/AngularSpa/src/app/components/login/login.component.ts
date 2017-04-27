@@ -57,20 +57,22 @@ export class LoginComponent extends BaseComponent {
             token.expires_on = this.authenticationService.calculateExpirationDate(+token.expires_in);
           }
 
-          let userInfo = this.authenticationService.extractUserInfo(token);
-          this.localStorageService.store(this.settingsService.tokenStorageKey, token, true);
-          this.localStorageService.store(this.settingsService.userStorageKey, userInfo, true);
-          this.authenticationService.tryNavigate();
-          this.ref.markForCheck();
+          let userInfo = this.authenticationService.extractUserInfo(token)
+
+          this.localStorageService.store(this.settingsService.tokenStorageKey, token, false)
+          this.localStorageService.store(this.settingsService.userStorageKey, userInfo, false)
+
+          this.authenticationService.tryNavigate()
+          this.ref.markForCheck()
         },
         error => {
           if (error !== Resources.invalidCredentials) {
-            this.baseService.displayError(Resources.oops);
+            this.baseService.displayError(Resources.oops)
           }
           else {
             this.loginError = Resources.invalidCredentials
           }
-          this.ref.markForCheck();
+          this.ref.markForCheck()
         })
   }
 

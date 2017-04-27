@@ -14,5 +14,7 @@ namespace Contactify.Services.Interfaces
         bool ValidateUsername(string username);
 
         bool ValidateEmail(string email);
+
+        bool ValidatePassword(string password, string confirmPassword);
     }
 }

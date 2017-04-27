@@ -13,4 +13,5 @@ export let Resources = {
   oops: "Something went wrong.",
   sessionExpired: "Your session was expired. Please, log in again.",
   unauthorized: 'Unauthorized!',
+  invalidData: 'Invalid Data!'
 }
