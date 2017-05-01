@@ -21,7 +21,7 @@ export class AuthGuard implements CanActivate {
   }
 
   checkLogin(url: string): boolean {
-    let isLoggedIn = this.localStorageService.retrieve(this.settingsService.tokenStorageKey, true);
+    let isLoggedIn = this.localStorageService.retrieve(this.settingsService.tokenStorageKey, false);
 
     if (isLoggedIn) {
       return true;

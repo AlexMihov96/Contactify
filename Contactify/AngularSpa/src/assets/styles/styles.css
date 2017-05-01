@@ -15,8 +15,7 @@ a:hover {
 
 /*Overide bootstrap classes*/
 .container-fluid {
-  position: relative;
-  height: 14rem;
+  padding: 0;
 }
 
 .btn-primary {
@@ -97,4 +96,17 @@ a:hover {
   background: -ms-linear-gradient(top, rgba(2, 149, 135, 1) 0%, rgba(2, 149, 135, 1) 49%, rgba(255, 255, 255, 1) 49%, rgba(255, 255, 255, 1) 100%);
   background: linear-gradient(to bottom, rgba(2, 149, 135, 1) 0%, rgba(2, 149, 135, 1) 49%, rgba(255, 255, 255, 1) 49%, rgba(255, 255, 255, 1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#029587', endColorstr='#ffffff', GradientType=0);
+}
+
+.inversed-background{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(2,149,135,1);
+  background: -moz-linear-gradient(left, rgba(2,149,135,1) 0%, rgba(2,149,135,1) 24%, rgba(255,255,255,1) 24%, rgba(255,255,255,1) 76%, rgba(2,149,135,1) 76%, rgba(2,149,135,1) 100%);
+  background: -webkit-linear-gradient(left, rgba(2,149,135,1) 0%, rgba(2,149,135,1) 24%, rgba(255,255,255,1) 24%, rgba(255,255,255,1) 76%, rgba(2,149,135,1) 76%, rgba(2,149,135,1) 100%);
+  background: -o-linear-gradient(left, rgba(2,149,135,1) 0%, rgba(2,149,135,1) 24%, rgba(255,255,255,1) 24%, rgba(255,255,255,1) 76%, rgba(2,149,135,1) 76%, rgba(2,149,135,1) 100%);
+  background: -ms-linear-gradient(left, rgba(2,149,135,1) 0%, rgba(2,149,135,1) 24%, rgba(255,255,255,1) 24%, rgba(255,255,255,1) 76%, rgba(2,149,135,1) 76%, rgba(2,149,135,1) 100%);
+  background: linear-gradient(to right, rgba(2,149,135,1) 0%, rgba(2,149,135,1) 24%, rgba(255,255,255,1) 24%, rgba(255,255,255,1) 76%, rgba(2,149,135,1) 76%, rgba(2,149,135,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#029587', endColorstr='#029587', GradientType=1 );
 }

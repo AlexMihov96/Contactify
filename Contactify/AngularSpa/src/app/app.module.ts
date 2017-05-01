@@ -10,7 +10,9 @@ import {ModalModule} from "angular2-modal";
 import {routing} from "./app.routing";
 import {
   LoginComponent,
-  RegisterComponent
+  RegisterComponent,
+  HomeComponent,
+  ProfileComponent
 } from './components/index'
 
 import {
@@ -31,7 +33,9 @@ import {
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    HomeComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
