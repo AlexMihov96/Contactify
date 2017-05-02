@@ -8,9 +8,10 @@ using Contactify.Entities;
 namespace Contactify.Entities.Migrations
 {
     [DbContext(typeof(ContactifyContext))]
-    partial class ContactifyContextModelSnapshot : ModelSnapshot
+    [Migration("20170502090138_Messages")]
+    partial class Messages
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.1")
@@ -144,7 +145,8 @@ namespace Contactify.Entities.Migrations
 
             modelBuilder.Entity("Contactify.Entities.Models.Status", b =>
                 {
-                    b.Property<byte>("Id");
+                    b.Property<byte>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Message")
                         .IsRequired()
@@ -329,11 +331,13 @@ namespace Contactify.Entities.Migrations
                 {
                     b.HasOne("Contactify.Entities.Models.User", "Receiver")
                         .WithMany("ReceiverMessageHeader")
-                        .HasForeignKey("ReceiverId");
+                        .HasForeignKey("ReceiverId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Contactify.Entities.Models.User", "Sender")
                         .WithMany("SenderMessageHeader")
-                        .HasForeignKey("SenderId");
+                        .HasForeignKey("SenderId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Contactify.Entities.Models.Status", "Status")
                         .WithMany("MessageHeaders")

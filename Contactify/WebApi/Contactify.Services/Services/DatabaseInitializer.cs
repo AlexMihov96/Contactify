@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Contactify.DataLayer.Interfaces;
+using Contactify.DataTransferObjects.Enums;
 using Contactify.DataTransferObjects.InputModels;
 using Contactify.Entities.Models;
 using Contactify.Services.Interfaces;
@@ -29,6 +31,8 @@ namespace Contactify.Services.Services
         public async Task Seed()
         {
             await this.SeedUser();
+
+            this.SeedStatus();
         }
 
         private async Task SeedUser()
@@ -59,6 +63,33 @@ namespace Contactify.Services.Services
                 if (!addAdminRole.Succeeded)
                 {
                     throw new Exception(string.Join("; ", addAdminRole.Errors));
+                }
+
+                this.data.SaveChanges();
+            }
+        }
+
+        private void SeedStatus()
+        {
+            if (!this.data.Status.Query().Any())
+            {
+                var statuses = new List<Status>()
+                {
+                    new Status()
+                    {
+                        Id = 1,
+                        Message = StatusMessages.Sent.ToString()
+                    },
+                    new Status()
+                    {
+                        Id = 2,
+                        Message = StatusMessages.Seen.ToString()
+                    }
+                };
+
+                foreach (var status in statuses)
+                {
+                    this.data.Status.Add(status);
                 }
 
                 this.data.SaveChanges();

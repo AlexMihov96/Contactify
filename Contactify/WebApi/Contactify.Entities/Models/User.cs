@@ -1,9 +1,17 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Contactify.Entities.Models
 {
     public class User
     {
+        public User()
+        {
+            this.Messages = new List<Message>();
+            this.SenderMessageHeader = new List<MessageHeader>();
+            this.ReceiverMessageHeader = new List<MessageHeader>();
+        }
+
         [Key]
         public int Id { get; set; }
 
@@ -35,5 +43,11 @@ namespace Contactify.Entities.Models
         public string ApplicationUserId { get; set; }
 
         public virtual ApplicationUser ApplicationUser { get; set; }
+
+        public virtual ICollection<MessageHeader> SenderMessageHeader { get; set; }
+
+        public virtual ICollection<MessageHeader> ReceiverMessageHeader { get; set; }
+
+        public virtual ICollection<Message> Messages { get; set; }
     }
 }

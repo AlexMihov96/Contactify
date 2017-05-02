@@ -26,6 +26,38 @@ namespace Contactify.DataLayer
             }
         }
 
+        public IRepository<Status> Status
+        {
+            get
+            {
+                return this.GetRepository<Status>();
+            }
+        }
+
+        public IRepository<MessageHeader> MessageHeader
+        {
+            get
+            {
+                return this.GetRepository<MessageHeader>();
+            }
+        }
+
+        public IRepository<Message> Message
+        {
+            get
+            {
+                return this.GetRepository<Message>();
+            }
+        }
+
+        public IRepository<IpAddress> IpAddress
+        {
+            get
+            {
+                return this.GetRepository<IpAddress>();
+            }
+        }
+
         public IRepository<ApplicationUser> ApplicationUser
         {
             get
