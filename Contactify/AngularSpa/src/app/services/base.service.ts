@@ -61,13 +61,13 @@ export class BaseService {
       }, 2000)), this.isShown = true
   }
 
-  // public confirmDeletion(message: any): Promise<DialogRef<TwoButtonPreset>> {
+  // public confirmDeletion(user-list: any): Promise<DialogRef<TwoButtonPreset>> {
   //   return this.modal.confirm()
   //     .size('sm')
   //     .headerClass('modal-alert-header')
   //     .footerClass('modal-alert-footer')
   //     .isBlocking(true)
-  //     .body(message)
+  //     .body(user-list)
   //     .okBtn('Yes')
   //     .cancelBtn('No')
   //     .open();

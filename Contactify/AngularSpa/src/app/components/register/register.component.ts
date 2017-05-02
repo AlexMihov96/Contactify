@@ -13,7 +13,7 @@ import {Resources} from "../../constants/resources-en";
 })
 
 export class RegisterComponent extends BaseComponent {
-  private user: RegisterUserInputModel = new RegisterUserInputModel
+  private user: RegisterUserInputModel
 
   constructor(private authService: AuthenticationService,
               private router: Router,

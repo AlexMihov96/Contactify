@@ -1,4 +1,4 @@
-export class RegisterUserInputModel {
+export interface RegisterUserInputModel {
   username: string
   password: string
   confirmPassword: string

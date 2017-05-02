@@ -12,7 +12,8 @@ import {
   LoginComponent,
   RegisterComponent,
   HomeComponent,
-  ProfileComponent
+  ProfileComponent,
+  UserListComponent
 } from './components/index'
 
 import {
@@ -22,7 +23,8 @@ import {
   SettingsService,
   LocalStorageService,
   HttpClient,
-  RegisterService
+  RegisterService,
+  UserService
 } from "./services/index";
 
 import {
@@ -36,6 +38,7 @@ import {
     RegisterComponent,
     HomeComponent,
     ProfileComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +58,8 @@ import {
     TokenVerifierService,
     BaseService,
     AuthGuard,
-    RegisterService
+    RegisterService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

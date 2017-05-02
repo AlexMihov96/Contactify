@@ -1,4 +1,5 @@
-﻿using Contactify.DataLayer;
+﻿using AutoMapper;
+using Contactify.DataLayer;
 using Contactify.DataLayer.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -56,6 +57,8 @@ namespace Contactify
                 .AddJsonOptions(config => config.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver())
                 .AddTypedRouting();
 
+            services.AddAutoMapper();
+
             // Add application services.
             services.AddSingleton(this.Configuration);
             services.AddSingleton<IAccountService, AccountService>();
@@ -65,6 +68,8 @@ namespace Contactify
 
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
+            services.AddTransient<IDatabaseInitializer, DatabaseInitializer>();
+            services.AddTransient<IUserService, UserService>();
 
             services.Configure<MvcOptions>(options =>
             {
@@ -82,7 +87,6 @@ namespace Contactify
                     });
             });
 
-            services.AddTransient<IDatabaseInitializer, DatabaseInitializer>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

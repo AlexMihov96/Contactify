@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="6.0.2" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="2.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Contactify.DataLayer\Contactify.DataLayer.csproj" />
     <ProjectReference Include="..\Contactify.Entities\Contactify.Entities.csproj" />
     <ProjectReference Include="..\Contactify.DataTransferObjects\Contactify.DataTransferObjects.csproj" />

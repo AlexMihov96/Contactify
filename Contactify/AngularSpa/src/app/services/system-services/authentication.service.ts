@@ -52,7 +52,7 @@ export class AuthenticationService extends BaseService {
   }
 
   public currentUserInfo() {
-    let token = this.localStorageService.retrieve(this.settingsService.tokenStorageKey, true)
+    let token = this.localStorageService.retrieve(this.settingsService.tokenStorageKey, false)
     return this.extractUserInfo(token)
   }
 
