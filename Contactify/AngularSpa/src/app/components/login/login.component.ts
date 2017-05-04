@@ -8,6 +8,7 @@ import {LocalStorageService} from "../../services/system-services/local-storage.
 import {SettingsService} from "../../services/system-services/settings.service";
 import {BaseService} from "../../services/base.service";
 import {ITokenResult} from "../../models/system-models/token-result";
+import {IUserInfoResult} from "../../models/system-models/user-info-result";
 
 @Component({
   templateUrl: './login.component.html',
@@ -78,6 +79,7 @@ export class LoginComponent extends BaseComponent {
 
   logout() {
     this.getAuthenticationService.logout()
+
     this.getRouter.navigate(['login'])
   }
 }

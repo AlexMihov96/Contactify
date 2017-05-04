@@ -17,19 +17,8 @@ export class UserListComponent extends BaseComponent {
   private userToDisplay: UserViewModel[] = []
 
   constructor(modal: Modal,
-              private userService: UserService,
               private baseService: BaseService,
               private authService: AuthenticationService) {
     super(modal)
-  }
-
-  ngOnInit() {
-    this.userInfo = this.authService.currentUserInfo()
-
-    this.subscriptions.push(this.userService.getTopFiveFriendsByUserId(this.userInfo.id)
-      .subscribe(response => {
-        debugger
-        this.userToDisplay = response
-      }))
   }
 }

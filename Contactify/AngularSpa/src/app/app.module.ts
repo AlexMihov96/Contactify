@@ -28,7 +28,8 @@ import {
 } from "./services/index";
 
 import {
-  AuthGuard
+  AuthGuard,
+  IsLoggedGuard
 } from "./guards/index";
 
 @NgModule({
@@ -53,11 +54,12 @@ import {
   providers: [
     AuthenticationService,
     HttpClient,
+    AuthGuard,
+    IsLoggedGuard,
     LocalStorageService,
     SettingsService,
     TokenVerifierService,
     BaseService,
-    AuthGuard,
     RegisterService,
     UserService
   ],

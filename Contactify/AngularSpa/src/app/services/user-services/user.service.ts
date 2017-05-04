@@ -12,10 +12,4 @@ export class UserService extends BaseService {
   constructor(private httpClient: HttpClient, modal: Modal) {
     super(modal)
   }
-
-  public getTopFiveFriendsByUserId(userId: number): Observable<UserViewModel[]> {
-    return this.httpClient.get('user/get-top-five/' + userId, true)
-      .map((response: Response) => response.json())
-      .catch(this.handleError)
-  }
 }
