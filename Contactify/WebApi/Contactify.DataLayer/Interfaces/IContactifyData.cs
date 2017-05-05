@@ -14,6 +14,14 @@ namespace Contactify.DataLayer.Interfaces
 
         IRepository<IpAddress> IpAddress { get; }
 
+        IRepository<Post> Post { get; }
+
+        IRepository<Like> Likes { get; }
+
+        IRepository<Comment> Comments { get; }
+
+        IRepository<Share> Shares { get; }
+
         IRepository<ApplicationUser> ApplicationUser { get; }
 
         int SaveChanges();

@@ -34,7 +34,7 @@ namespace Contactify.Services.Services
             //TODO: Profile picture, response if registration exists
             this.CheckModelForNull(model);
 
-            if (this.ValidateEmail(model.Email) && this.ValidatePassword(model.Password, model.ConfirmPassword) && this.ValidateUsername(model.Username))
+            if (this.ValidateEmail(model.Email) && this.ValidateUsername(model.Username))
             {
                 var user = new ApplicationUser() { UserName = model.Username, Email = model.Email };
                 var result = await this.UserManager.CreateAsync(user, model.Password);
@@ -43,9 +43,6 @@ namespace Contactify.Services.Services
                 {
                     var vacationUser = new User()
                     {
-                        Firstname = model.Firstname,
-                        Lastname = model.Lastname,
-                        FullName = $"{model.Firstname} {model.Lastname}",
                         Username = model.Username,
                         ProfilePicture = null,
                         Email = model.Email,

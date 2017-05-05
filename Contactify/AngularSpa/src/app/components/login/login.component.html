@@ -2,7 +2,7 @@
   <div class="text-center">
     <label class="text-logo">CONTACTIFY</label>
   </div>
-  <div class="wrapper col-md-offset-4 col-md-4">
+  <div class="wrapper col-md-offset-4 col-lg-offset-4  col-xs-offset-4  col-md-4 col-lg-4 col-xs-4">
     <form #form="ngForm" (submit)="login()" novalidate>
       <!--dummy input to disable autofill-->
       <input type="password" style="width: 0;height: 0; visibility: hidden;position:absolute;left:0;top:0;"/>
@@ -18,7 +18,8 @@
                #password="ngModel" required/>
       </div>
       <div>
-        <input type="submit" [disabled]="form.invalid" class="btn btn-md btn-block btn-primary margin-top-30" value="SIGN IN TO YOUR ACCOUNT">
+        <input type="submit" [disabled]="form.invalid" class="btn btn-md btn-block btn-primary margin-top-30"
+               value="SIGN IN TO YOUR ACCOUNT">
       </div>
       <div class="text-center margin-top-30">
         <a href="#" class="text-blue">Forgot Your Password?</a>

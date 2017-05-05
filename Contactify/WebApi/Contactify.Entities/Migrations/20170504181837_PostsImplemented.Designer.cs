@@ -8,9 +8,10 @@ using Contactify.Entities;
 namespace Contactify.Entities.Migrations
 {
     [DbContext(typeof(ContactifyContext))]
-    partial class ContactifyContextModelSnapshot : ModelSnapshot
+    [Migration("20170504181837_PostsImplemented")]
+    partial class PostsImplemented
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.1")
@@ -68,18 +69,16 @@ namespace Contactify.Entities.Migrations
 
             modelBuilder.Entity("Contactify.Entities.Models.Comment", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Message")
-                        .IsRequired()
-                        .HasMaxLength(32767);
-
                     b.Property<int>("PostId");
 
-                    b.HasKey("Id");
+                    b.Property<string>("Message")
+                        .HasMaxLength(32767);
 
-                    b.HasIndex("PostId");
+                    b.Property<int?>("PostId1");
+
+                    b.HasKey("PostId");
+
+                    b.HasIndex("PostId1");
 
                     b.ToTable("Comment");
                 });
@@ -104,14 +103,13 @@ namespace Contactify.Entities.Migrations
 
             modelBuilder.Entity("Contactify.Entities.Models.Like", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
                     b.Property<int>("PostId");
 
-                    b.HasKey("Id");
+                    b.Property<int?>("PostId1");
 
-                    b.HasIndex("PostId");
+                    b.HasKey("PostId");
+
+                    b.HasIndex("PostId1");
 
                     b.ToTable("Like");
                 });
@@ -181,7 +179,8 @@ namespace Contactify.Entities.Migrations
 
                     b.Property<int>("CommentCount");
 
-                    b.Property<DateTime>("CreationDate");
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("Date");
 
                     b.Property<int>("LikeCount");
 
@@ -189,10 +188,10 @@ namespace Contactify.Entities.Migrations
                         .IsRequired()
                         .HasMaxLength(32767);
 
-                    b.Property<string>("Picture")
-                        .HasMaxLength(1000);
-
                     b.Property<int>("ShareCount");
+
+                    b.Property<string>("Thumbnail")
+                        .HasMaxLength(1000);
 
                     b.Property<int>("UserId");
 
@@ -207,14 +206,13 @@ namespace Contactify.Entities.Migrations
 
             modelBuilder.Entity("Contactify.Entities.Models.Share", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
                     b.Property<int>("PostId");
 
-                    b.HasKey("Id");
+                    b.Property<int?>("PostId1");
 
-                    b.HasIndex("PostId");
+                    b.HasKey("PostId");
+
+                    b.HasIndex("PostId1");
 
                     b.ToTable("Share");
                 });
@@ -241,27 +239,30 @@ namespace Contactify.Entities.Migrations
                         .IsRequired()
                         .HasMaxLength(450);
 
-                    b.Property<int?>("CommentId");
+                    b.Property<int?>("CommentPostId");
 
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(100);
 
                     b.Property<string>("Firstname")
+                        .IsRequired()
                         .HasMaxLength(50);
 
                     b.Property<string>("FullName")
+                        .IsRequired()
                         .HasMaxLength(100);
 
                     b.Property<string>("Lastname")
+                        .IsRequired()
                         .HasMaxLength(50);
 
-                    b.Property<int?>("LikeId");
+                    b.Property<int?>("LikePostId");
 
                     b.Property<string>("ProfilePicture")
                         .HasMaxLength(10000);
 
-                    b.Property<int?>("ShareId");
+                    b.Property<int?>("SharePostId");
 
                     b.Property<string>("Username")
                         .IsRequired()
@@ -272,14 +273,14 @@ namespace Contactify.Entities.Migrations
                     b.HasIndex("ApplicationUserId")
                         .IsUnique();
 
-                    b.HasIndex("CommentId");
+                    b.HasIndex("CommentPostId");
 
                     b.HasIndex("Email")
                         .IsUnique();
 
-                    b.HasIndex("LikeId");
+                    b.HasIndex("LikePostId");
 
-                    b.HasIndex("ShareId");
+                    b.HasIndex("SharePostId");
 
                     b.ToTable("User");
                 });
@@ -395,8 +396,7 @@ namespace Contactify.Entities.Migrations
                 {
                     b.HasOne("Contactify.Entities.Models.Post", "Post")
                         .WithMany("Comments")
-                        .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("PostId1");
                 });
 
             modelBuilder.Entity("Contactify.Entities.Models.IpAddress", b =>
@@ -411,8 +411,7 @@ namespace Contactify.Entities.Migrations
                 {
                     b.HasOne("Contactify.Entities.Models.Post", "Post")
                         .WithMany("Likes")
-                        .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("PostId1");
                 });
 
             modelBuilder.Entity("Contactify.Entities.Models.Message", b =>
@@ -454,8 +453,7 @@ namespace Contactify.Entities.Migrations
                 {
                     b.HasOne("Contactify.Entities.Models.Post", "Post")
                         .WithMany("Shares")
-                        .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("PostId1");
                 });
 
             modelBuilder.Entity("Contactify.Entities.Models.User", b =>
@@ -467,15 +465,15 @@ namespace Contactify.Entities.Migrations
 
                     b.HasOne("Contactify.Entities.Models.Comment")
                         .WithMany("Users")
-                        .HasForeignKey("CommentId");
+                        .HasForeignKey("CommentPostId");
 
                     b.HasOne("Contactify.Entities.Models.Like")
                         .WithMany("Users")
-                        .HasForeignKey("LikeId");
+                        .HasForeignKey("LikePostId");
 
                     b.HasOne("Contactify.Entities.Models.Share")
                         .WithMany("Users")
-                        .HasForeignKey("ShareId");
+                        .HasForeignKey("SharePostId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>

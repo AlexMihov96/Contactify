@@ -8,9 +8,10 @@ using Contactify.Entities;
 namespace Contactify.Entities.Migrations
 {
     [DbContext(typeof(ContactifyContext))]
-    partial class ContactifyContextModelSnapshot : ModelSnapshot
+    [Migration("20170505074934_UpdatingUser")]
+    partial class UpdatingUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.1")

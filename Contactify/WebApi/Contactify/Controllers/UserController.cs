@@ -1,6 +1,5 @@
 ﻿using System;
 using Contactify.Services.Interfaces;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Contactify.Controllers

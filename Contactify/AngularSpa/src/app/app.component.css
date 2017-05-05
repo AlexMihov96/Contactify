@@ -15,7 +15,8 @@
   padding: 15px;
   font-size: 16px;
   background-color: white;
-  color: #1f1f2e;
+  font-size: 1em;
+  color: #6f6f6f;
 }
 
 .modal-success-header {

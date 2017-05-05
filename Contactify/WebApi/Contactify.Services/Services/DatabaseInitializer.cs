@@ -43,9 +43,7 @@ namespace Contactify.Services.Services
                 {
                     Username = "admin",
                     Email = "admin@contactify.io",
-                    Password = "123123",
-                    Firstname = "Administrator",
-                    Lastname = "Administrator"
+                    Password = "123123"
                 };
 
                 await this.accountService.RegisterUser(adminModel);

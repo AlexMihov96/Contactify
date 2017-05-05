@@ -20,6 +20,14 @@ namespace Contactify.Entities
 
         public DbSet<IpAddress> IpAddress { get; set; }
 
+        public DbSet<Post> Posts { get; set; }
+
+        public DbSet<Like> Like { get; set; }
+
+        public DbSet<Comment> Comment { get; set; }
+
+        public DbSet<Share> Share { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

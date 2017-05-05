@@ -58,6 +58,39 @@ namespace Contactify.DataLayer
             }
         }
 
+        public IRepository<Post> Post
+        {
+            get
+            {
+                return this.GetRepository<Post>();
+            }
+        }
+
+
+        public IRepository<Like> Likes
+        {
+            get
+            {
+                return this.GetRepository<Like>();
+            }
+        }
+
+        public IRepository<Comment> Comments
+        {
+            get
+            {
+                return this.GetRepository<Comment>();
+            }
+        }
+
+        public IRepository<Share> Shares
+        {
+            get
+            {
+                return this.GetRepository<Share>();
+            }
+        }
+
         public IRepository<ApplicationUser> ApplicationUser
         {
             get

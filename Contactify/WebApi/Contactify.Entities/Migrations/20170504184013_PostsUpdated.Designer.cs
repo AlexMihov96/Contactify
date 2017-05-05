@@ -8,9 +8,10 @@ using Contactify.Entities;
 namespace Contactify.Entities.Migrations
 {
     [DbContext(typeof(ContactifyContext))]
-    partial class ContactifyContextModelSnapshot : ModelSnapshot
+    [Migration("20170504184013_PostsUpdated")]
+    partial class PostsUpdated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.1")
@@ -72,7 +73,6 @@ namespace Contactify.Entities.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Message")
-                        .IsRequired()
                         .HasMaxLength(32767);
 
                     b.Property<int>("PostId");
@@ -181,7 +181,8 @@ namespace Contactify.Entities.Migrations
 
                     b.Property<int>("CommentCount");
 
-                    b.Property<DateTime>("CreationDate");
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("Date");
 
                     b.Property<int>("LikeCount");
 
@@ -189,10 +190,10 @@ namespace Contactify.Entities.Migrations
                         .IsRequired()
                         .HasMaxLength(32767);
 
-                    b.Property<string>("Picture")
-                        .HasMaxLength(1000);
-
                     b.Property<int>("ShareCount");
+
+                    b.Property<string>("Thumbnail")
+                        .HasMaxLength(1000);
 
                     b.Property<int>("UserId");
 
@@ -248,12 +249,15 @@ namespace Contactify.Entities.Migrations
                         .HasMaxLength(100);
 
                     b.Property<string>("Firstname")
+                        .IsRequired()
                         .HasMaxLength(50);
 
                     b.Property<string>("FullName")
+                        .IsRequired()
                         .HasMaxLength(100);
 
                     b.Property<string>("Lastname")
+                        .IsRequired()
                         .HasMaxLength(50);
 
                     b.Property<int?>("LikeId");

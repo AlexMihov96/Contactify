@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Contactify.DataLayer.Interfaces;
 using Contactify.Entities.Models;
 using Microsoft.AspNetCore.Identity;
@@ -23,6 +24,11 @@ namespace Contactify.Services.Services
             {
                 throw new ArgumentNullException(nameof(model), "The input model cannot be null");
             }
+        }
+
+        protected string GetUsernameById(int userId)
+        {
+            return this.Data.User.Query().FirstOrDefault(u => u.Id == userId).Username;
         }
     }
 }

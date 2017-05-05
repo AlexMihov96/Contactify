@@ -8,9 +8,10 @@ using Contactify.Entities;
 namespace Contactify.Entities.Migrations
 {
     [DbContext(typeof(ContactifyContext))]
-    partial class ContactifyContextModelSnapshot : ModelSnapshot
+    [Migration("20170504192910_ModelsOrdered")]
+    partial class ModelsOrdered
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.1")
@@ -181,7 +182,8 @@ namespace Contactify.Entities.Migrations
 
                     b.Property<int>("CommentCount");
 
-                    b.Property<DateTime>("CreationDate");
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("Date");
 
                     b.Property<int>("LikeCount");
 
@@ -248,12 +250,15 @@ namespace Contactify.Entities.Migrations
                         .HasMaxLength(100);
 
                     b.Property<string>("Firstname")
+                        .IsRequired()
                         .HasMaxLength(50);
 
                     b.Property<string>("FullName")
+                        .IsRequired()
                         .HasMaxLength(100);
 
                     b.Property<string>("Lastname")
+                        .IsRequired()
                         .HasMaxLength(50);
 
                     b.Property<int?>("LikeId");

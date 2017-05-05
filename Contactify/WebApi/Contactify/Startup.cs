@@ -39,7 +39,10 @@ namespace Contactify
         {
             // Add framework services.
             services.AddDbContext<ContactifyContext>(options =>
-                options.UseSqlServer(this.Configuration.GetConnectionString("ContactifyConnection")));
+                options.UseSqlServer(this.Configuration.GetConnectionString("ContactifyConnection"))
+                );
+
+            services.AddScoped(p => new ContactifyContext(p.GetService<DbContextOptions<ContactifyContext>>()));
 
             services.AddIdentity<ApplicationUser, IdentityRole>(config =>
                 {
@@ -70,6 +73,7 @@ namespace Contactify
             services.AddTransient<ISmsSender, AuthMessageSender>();
             services.AddTransient<IDatabaseInitializer, DatabaseInitializer>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IPostService, PostService>();
 
             services.Configure<MvcOptions>(options =>
             {

@@ -6,3 +6,4 @@ export * from './system-services/token-verifier.service';
 export * from './user-services/register.service';
 export * from './base.service';
 export * from './user-services/user.service'
+export * from './time-line/home.service'

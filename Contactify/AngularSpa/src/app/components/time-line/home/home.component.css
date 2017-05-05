@@ -1,0 +1,11 @@
+.post-action-more {
+  color: #6f6f6f;
+  float: right;
+  min-width: 0;
+}
+
+.post-names-text {
+  font-size: 1em;
+  color: #434356;
+  font-family: "Yu Gothic UI Semibold";
+}
