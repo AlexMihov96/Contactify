@@ -74,8 +74,8 @@ export class AuthenticationService extends BaseService {
   }
 
   public logout() {
-    this.localStorageService.remove(this.settingsService.tokenStorageKey, true)
-    this.localStorageService.remove(this.settingsService.userStorageKey, true)
+    this.localStorageService.remove(this.settingsService.tokenStorageKey, false)
+    this.localStorageService.remove(this.settingsService.userStorageKey, false)
     this.userChanged.emit(null)
     this.showMenu.emit(false)
     this.loginError = ''

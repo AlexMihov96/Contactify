@@ -13,7 +13,8 @@ import {
   RegisterComponent,
   HomeComponent,
   ProfileComponent,
-  UserListComponent
+  UserListComponent,
+  NavBarComponent
 } from './components/index'
 
 import {
@@ -40,7 +41,8 @@ import {
     RegisterComponent,
     HomeComponent,
     ProfileComponent,
-    UserListComponent
+    UserListComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
