@@ -4,7 +4,7 @@ import {HttpClient} from "../system-services/http-client.service";
 import {RegisterUserInputModel} from "../../models/input-models/register-user.input-model";
 import {Observable} from "rxjs/Observable";
 import 'rxjs/Rx'
-import {UserPostsViewModel} from "../../models/time-line/user-posts.view-model";
+import {UserPostsViewModel} from "../../models/view-models/user-posts.view-model";
 import {Response} from "@angular/http";
 
 @Injectable()

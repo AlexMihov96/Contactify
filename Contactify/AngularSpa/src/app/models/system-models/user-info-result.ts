@@ -1,5 +1,5 @@
 export interface IUserInfoResult {
   id: number
-  userFullName: string
+  username: string
   role: string
 }

@@ -8,8 +8,14 @@ import {Response} from "@angular/http";
 
 @Injectable()
 
-export class UserService extends BaseService {
-  constructor(private httpClient: HttpClient, modal: Modal) {
-    super(modal)
+export class ProfileService {
+  constructor(private httpClient: HttpClient,
+              private baseService: BaseService) {
+  }
+
+  public getUserInfo(userId: number): Observable<UserViewModel> {
+    return this.httpClient.get('profile/get-user-info/' + userId, true)
+      .map((resp: Response) => <UserViewModel>resp.json())
+      .catch(this.baseService.handleError)
   }
 }

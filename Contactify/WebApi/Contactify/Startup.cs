@@ -72,7 +72,7 @@ namespace Contactify
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
             services.AddTransient<IDatabaseInitializer, DatabaseInitializer>();
-            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IProfileService, ProfileService>();
             services.AddTransient<IPostService, PostService>();
 
             services.Configure<MvcOptions>(options =>

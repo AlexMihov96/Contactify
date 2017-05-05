@@ -20,7 +20,7 @@ export class AuthenticationService extends BaseService {
   public userInfo: IUserInfoResult = {
     id: 0,
     role: '',
-    userFullName: '',
+    username: '',
   }
   jwtHelper: JwtHelper = new JwtHelper()
   tokenExpirationDate: Date
@@ -61,11 +61,11 @@ export class AuthenticationService extends BaseService {
       let decodedToken = this.jwtHelper.decodeToken(token.access_token)
       let userId = decodedToken['id']
       let userRole = decodedToken['role']
-      let userFullName = decodedToken['userFullName']
+      let username = decodedToken['username']
       this.userInfo = {
         id: userId,
         role: userRole,
-        userFullName: userFullName,
+        username: username,
       }
       this.userChanged.emit(this.userInfo)
     }

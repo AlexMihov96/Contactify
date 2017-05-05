@@ -25,7 +25,7 @@ import {
   LocalStorageService,
   HttpClient,
   RegisterService,
-  UserService,
+  ProfileService,
   HomeService
 } from "./services/index";
 
@@ -64,7 +64,7 @@ import {
     TokenVerifierService,
     BaseService,
     RegisterService,
-    UserService,
+    ProfileService,
     HomeService
   ],
   bootstrap: [AppComponent]

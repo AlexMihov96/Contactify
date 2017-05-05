@@ -6,7 +6,7 @@ import {HomeService} from "../../../services/time-line/home.service";
 import {AuthenticationService} from "../../../services/system-services/authentication.service";
 import {IUserInfoResult} from "../../../models/system-models/user-info-result";
 import {Resources} from "../../../constants/resources-en";
-import {UserPostsViewModel} from "../../../models/time-line/user-posts.view-model";
+import {UserPostsViewModel} from "../../../models/view-models/user-posts.view-model";
 import {debug} from "util";
 
 @Component({

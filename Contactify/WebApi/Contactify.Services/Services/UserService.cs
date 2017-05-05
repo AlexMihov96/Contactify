@@ -7,16 +7,25 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Contactify.Services.Services
 {
-    public class UserService : Service, IUserService
+    public class ProfileService : Service, IProfileService
     {
-        public UserService(IContactifyData data, UserManager<ApplicationUser> userManager)
+        public ProfileService(IContactifyData data, UserManager<ApplicationUser> userManager)
             : base(data, userManager)
         {
         }
 
-        public IQueryable<UserViewModel> GetTopFiveFriendsByUserId(int userId)
+        public UserViewModel GetUserInfo(int userId)
         {
-            throw new System.NotImplementedException();
+            var userInfo = this.Data.User.Query().FirstOrDefault(u => u.Id == userId);
+
+            var userViewModel = new UserViewModel()
+            {
+                Username = userInfo.Username,
+                Email = userInfo.Email,
+                ProfilePicture = userInfo.ProfilePicture
+            };
+
+            return userViewModel;
         }
     }
 }
