@@ -1,6 +1,0 @@
-export * from './login/login.component'
-export * from './register/register.component'
-export * from './time-line/user-list/user-list.component'
-export * from './time-line/home/home.component'
-export * from './time-line/profile/profile.component'
-export * from './nav-bar/nav-bar.component'

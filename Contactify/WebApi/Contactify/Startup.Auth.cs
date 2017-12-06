@@ -79,7 +79,7 @@ namespace Contactify
 
         }
 
-        private async Task<ClaimsIdentity> GetIdentity(string username, string password)
+        public async Task<ClaimsIdentity> GetIdentity(string username, string password)
         {
             var result = await this.signInManager.PasswordSignInAsync(username, password, false, lockoutOnFailure: false);
 

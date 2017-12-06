@@ -1,0 +1,47 @@
+@import "./components/authentication/login/login.component.css";
+@import "./components/shared/header/header.component.css";
+
+.modal-title {
+  font-family: "Raleway SemiBold";
+  text-align: center;
+  color: white;
+  margin: 5px;
+  line-height: 1.42857143;
+}
+
+.modal-body {
+  font-family: "Raleway Medium";
+  text-align: center;
+  position: relative;
+  padding: 15px;
+  font-size: 16px;
+  background-color: white;
+  font-size: 1em;
+  color: #6f6f6f;
+}
+
+.modal-success-header {
+  padding: 15px;
+  text-align: right;
+  background-color: #029587;
+  border-bottom: none;
+}
+
+.modal-warning-header {
+  padding: 15px;
+  text-align: right;
+  background-color: #FF7900;
+  border-bottom: none;
+}
+
+.modal-error-header {
+  padding: 15px;
+  text-align: right;
+  background-color: #CB2028;
+  border-bottom: none;
+}
+
+.modal-footer {
+  padding: 0;
+  border-top: none;
+}

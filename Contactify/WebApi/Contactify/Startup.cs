@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Contactify.DataLayer;
+﻿using Contactify.DataLayer;
 using Contactify.DataLayer.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -59,8 +58,6 @@ namespace Contactify
             services.AddMvc()
                 .AddJsonOptions(config => config.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver())
                 .AddTypedRouting();
-
-            services.AddAutoMapper();
 
             // Add application services.
             services.AddSingleton(this.Configuration);

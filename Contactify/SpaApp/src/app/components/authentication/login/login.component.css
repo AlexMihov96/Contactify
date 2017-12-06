@@ -1,0 +1,12 @@
+.text-logo {
+  font-size: 100px;
+  font-family: "Raleway Black",fantasy;
+  color: #ffffff;
+}
+
+.bottom-position {
+  position: fixed;
+  font-size: 0.8vw;
+  bottom: 15%;
+  right: 43%;
+}

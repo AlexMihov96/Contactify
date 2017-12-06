@@ -5,6 +5,7 @@ using Contactify.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace Contactify.Controllers
 {
@@ -40,7 +41,7 @@ namespace Contactify.Controllers
                     return this.BadRequest(this.ModelState);
                 }
 
-                return this.Ok();
+                return this.Ok(new List<int>() { 1, 2, 3, 4, 5 });
             }
             catch (Exception ex)
             {
