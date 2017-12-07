@@ -18,14 +18,24 @@ export function reducer(state = initialState, action: AuthenticationActions.Acti
     case AuthenticationActions.LOGIN_SUCCESS:
       const authData = action.payload
       window.localStorage.setItem("token", JSON.stringify(authData.access_token))//TODO: replace with ngrx-store-localstorage
+
       const token = jwtDecode(authData.access_token)
       window.localStorage.setItem("token_expiration", JSON.stringify(token.exp))
-
+debugger
       return Object.assign({}, state, {
         token: authData.access_token,
         tokenExpiration: token.exp,
         isLoggedIn: true,
-        user: {id: token.userId, fullName: token.unique_name, userRole: token.userRole}
+        user: {
+          id: token.id,
+          fullName: token.username,
+          userRole: token.role,
+          address: token.address,
+          firstName: token.firstName,
+          lastName: token.lastName,
+          avatar: token.avatar,
+          phoneNumber: ''
+        }
       })
 
     case AuthenticationActions.LOGOUT:

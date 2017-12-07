@@ -4,6 +4,6 @@ export class UserViewModel {
   firstName: string
   lastName: string
   email: string
-  profilePicture: string
+  avatar: string
   phoneNumber: string
 }

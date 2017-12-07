@@ -4,8 +4,13 @@ export interface AuthenticationState {
   isLoggedIn: boolean
   user: {
     id: number,
-    fullName: string,
-    userRole: string,
+    username: string,
+    role: string,
+    email: string,
+    firstName: string,
+    lastName: string,
+    avatar: string,
+    phoneNumber: string
   },
   redirectUrl: string
 }

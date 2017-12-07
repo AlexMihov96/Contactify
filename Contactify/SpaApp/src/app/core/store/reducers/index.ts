@@ -11,3 +11,4 @@ export const selectAuth = (state: AppState) => state.auth
 export const selectAuthToken = createSelector(selectAuth, (state: AuthenticationState) => state.token)
 export const selectAuthIsLoggedIn = createSelector(selectAuth, (state: AuthenticationState) => state.isLoggedIn)
 export const selectAuthRedirectUrl = createSelector(selectAuth, (state: AuthenticationState) => state.redirectUrl)
+export const selectAuthUser = createSelector(selectAuth, (state: AuthenticationState) => state.user)

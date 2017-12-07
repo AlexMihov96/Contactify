@@ -1,7 +1,6 @@
 import { Component } from "@angular/core"
 import { BaseComponent } from "../../base.component"
 import { UserPostsViewModel } from "../../../core/models/view-models/user-posts.view-model"
-import { UserInfoResult } from "../../../core/interfaces/user-info-result"
 import { NewsFeedService } from "../../../core/services/time-line/news-feed/news-feed.service"
 import { AuthService } from "../../../core/services"
 
@@ -12,7 +11,6 @@ import { AuthService } from "../../../core/services"
 
 export class NewsFeedComponent extends BaseComponent {
   private postMessage: string
-  private userInfo: UserInfoResult
   private postViewModel: UserPostsViewModel[] = []
 
   constructor(private newsFeedService: NewsFeedService,
@@ -26,12 +24,12 @@ export class NewsFeedComponent extends BaseComponent {
   }
 
   public post(postMessage: string) {
-    if (postMessage) {
-      this.subscriptions.push(this.newsFeedService.createPost(postMessage, this.userInfo.id)
-        .subscribe(response => this.postViewModel = response))
-    }
-    else {
-      // this.baseService.displayWarning(Resources.invalidLenght)
-    }
+    // if (postMessage) {
+    //   this.subscriptions.push(this.newsFeedService.createPost(postMessage, this.userInfo.id)
+    //     .subscribe(response => this.postViewModel = response))
+    // }
+    // else {
+    //   // this.baseService.displayWarning(Resources.invalidLenght)
+    // }
   }
 }
