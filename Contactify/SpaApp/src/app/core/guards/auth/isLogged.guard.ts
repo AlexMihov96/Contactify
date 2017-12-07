@@ -1,19 +1,19 @@
-import "rxjs/add/operator/let"
 import { Injectable } from "@angular/core"
-import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterStateSnapshot } from "@angular/router"
+import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from "@angular/router"
 import { Store } from "@ngrx/store"
+
+import "rxjs/add/operator/let"
 import { AppState } from "../../store/state/app-state"
 import { selectAuthIsLoggedIn } from "../../store/reducers"
-import { AuthenticationActions } from "../../store/actions/authentication.actions"
 
 @Injectable()
 
-export class AuthGuard implements CanActivate, CanActivateChild {
+export class IsLoggedGuard implements CanActivate {
   private isLoggedIn: boolean = false
 
   constructor(private router: Router,
-              private store$: Store<AppState>) {
-    this.store$
+              private store: Store<AppState>) {
+    this.store
       .select<boolean>(selectAuthIsLoggedIn)
       .subscribe((isLoggedIn: boolean) => this.isLoggedIn = isLoggedIn)
   }
@@ -22,16 +22,12 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     return this.checkIsLoggedIn(state.url)
   }
 
-  public canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    return this.checkIsLoggedIn(state.url)
-  }
-
   private checkIsLoggedIn(url: string): boolean {
-    if (this.isLoggedIn) {
+    if (!this.isLoggedIn) {
       return true
     }
 
-    this.store$.dispatch(new AuthenticationActions.RouteNotAuthorizedAction(url))
+    this.router.navigate([""])
 
     return false
   }

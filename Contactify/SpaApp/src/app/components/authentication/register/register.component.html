@@ -3,7 +3,7 @@
     <div class="text-center">
       <label class="text-format-headers">SIGN UP</label>
     </div>
-    <form #form="ngForm" (submit)="register(form.value)" novalidate>
+    <form #form="ngForm" (submit)="register(user)" novalidate>
       <!--dummy input to disable autofill-->
       <input type="password" style="width: 0;height: 0; visibility: hidden;position:absolute;left:0;top:0;"/>
 

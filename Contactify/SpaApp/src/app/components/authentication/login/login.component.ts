@@ -1,10 +1,9 @@
 import { Component } from "@angular/core"
 import { BaseComponent } from "../../base.component"
-import { AuthService } from "../../../core/services/authentication/auth.service"
-import { TokenResult } from "../../../core/interfaces/token-result"
-import { StorageService } from "../../../core/services/authentication/storage.service"
-import { constants } from "../../../constants/constants"
-import { Router } from "@angular/router"
+import { HttpClientService } from "../../../core/services"
+import { Store } from "@ngrx/store"
+import { AppState } from "../../../core/store/state/app-state"
+import { AuthenticationActions } from "../../../core/store/actions/authentication.actions"
 
 @Component({
   templateUrl: './login.component.html',
@@ -12,37 +11,20 @@ import { Router } from "@angular/router"
 })
 
 export class LoginComponent extends BaseComponent {
-  private model: any = {}
+  private model: {
+    username: string,
+    password: string
+  } = {username: '', password: ''}
 
-  constructor(private authService: AuthService,
-              private storageService: StorageService,
-              private router: Router) {
+  constructor(private http: HttpClientService,
+              private store$: Store<AppState>) {
     super()
   }
 
-  login() {
-    this.authService.login(this.model.username, this.model.password)
-      .subscribe((token: TokenResult) => {
-          // calculate expiry date and save result
-          if (token.expires_in) {
-            token.expires_on = this.authService.calculateExpirationDate(+token.expires_in)
-          }
+  public login() {
+    this.store$.dispatch(new AuthenticationActions.LoginAction(this.model))
+  }
 
-          let userInfo = this.authService.extractUserInfo(token)
-
-          this.storageService.store(constants.tokenStorageKey, token)
-          this.storageService.store(constants.userStorageKey, userInfo)
-
-          this.authService.tryNavigate()
-        }
-        //TODO: error => {
-        //   if (error !== Resources.invalidCredentials) {
-        //     this.baseService.displayError(Resources.oops)
-        //   }
-        //   else {
-        //     this.loginError = Resources.invalidCredentials
-        //   }
-        // }
-      )
+  public changePassword() {
   }
 }

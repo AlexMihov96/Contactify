@@ -2,6 +2,10 @@ import { Component } from "@angular/core"
 import { BaseComponent } from "../../base.component"
 import { AuthService } from "../../../core/services/authentication/auth.service"
 import { Router } from "@angular/router"
+import { AppState } from "../../../core/store/state/app-state"
+import { Store } from "@ngrx/store"
+import { selectAuthIsLoggedIn } from "../../../core/store/reducers"
+import { AuthenticationActions } from "../../../core/store/actions/authentication.actions"
 
 @Component({
   selector: 'app-header',
@@ -10,14 +14,20 @@ import { Router } from "@angular/router"
 })
 
 export class HeaderComponent extends BaseComponent {
+  public isLogged: boolean = false
+
   constructor(private authService: AuthService,
-              private router: Router) {
+              private router: Router,
+              private store$: Store<AppState>) {
     super()
+
+    this.store$.select(selectAuthIsLoggedIn)
+      .subscribe(isLogged => {
+        this.isLogged = isLogged
+      })
   }
 
   public signOut() {
-    this.authService.logout()
-
-    this.router.navigate(['login'])
+    this.store$.dispatch(new AuthenticationActions.LogoutAction())
   }
 }

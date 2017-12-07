@@ -2,8 +2,11 @@ import { Component } from "@angular/core"
 import { BaseComponent } from "../../base.component"
 import { RegisterUserInputModel } from "../../../core/models/input-models/register.input-model"
 import { Router } from "@angular/router"
-import { AuthService } from "../../../core/services/authentication/auth.service"
+import { AuthService } from "../../../core/services"
 import { ToastrService } from "../../../core/services/dialogs/toast.service"
+import { AppState } from "../../../core/store/state/app-state"
+import { Store } from "@ngrx/store"
+import { AuthenticationActions } from "../../../core/store/actions/authentication.actions"
 
 @Component({
   templateUrl: './register.component.html'
@@ -14,18 +17,12 @@ export class RegisterComponent extends BaseComponent {
 
   constructor(private authService: AuthService,
               private router: Router,
-              private toastr: ToastrService) {
+              private toastr: ToastrService,
+              private store$: Store<AppState>) {
     super()
   }
 
-  private register(form: any): void {
-    this.subscriptions.push(this.authService.register(this.user)
-      .subscribe(resp => {
-          this.toastr.showSuccess("Register successful",false)
-          this.router.navigate(['/login'])
-        },
-        error => {
-          //TODO:  this.baseService.displayError(Resources.invalidData)
-        }))
+  private register(user: RegisterUserInputModel): void {
+    this.store$.dispatch(new AuthenticationActions.RegisterAction(user))
   }
 }

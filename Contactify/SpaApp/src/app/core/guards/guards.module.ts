@@ -1,12 +1,9 @@
 import { NgModule } from "@angular/core"
-import { TokenGuard, AuthGuard, IsLoggedGuard } from "./"
+import { AuthGuard, IsLoggedGuard } from "./"
 
 @NgModule({
-  imports: [],
-  declarations: [],
   providers: [
     AuthGuard,
-    TokenGuard,
     IsLoggedGuard
   ]
 })

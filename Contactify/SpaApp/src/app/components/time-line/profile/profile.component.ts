@@ -21,8 +21,6 @@ export class ProfileComponent extends BaseComponent {
   }
 
   ngOnInit() {
-    this.authUserInfo = this.authService.currentUserInfo()
-
     this.subscriptions.push(this.profileService.getUserInfo(this.authUserInfo.id)
       .subscribe(response => this.userInfoModel = response
       ))

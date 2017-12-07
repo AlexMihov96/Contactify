@@ -21,8 +21,6 @@ export class NewsFeedComponent extends BaseComponent {
   }
 
   ngOnInit() {
-    this.userInfo = this.authService.currentUserInfo()
-
     this.subscriptions.push(this.newsFeedService.getTenLatestPosts()
       .subscribe(response => this.postViewModel = response))
   }

@@ -15,6 +15,10 @@ import { ServiceModule } from "./core/services/service.module"
 import { AuthenticationModule } from "./components/authentication/authentication.module"
 import { GuardsModule } from "./core/guards/guards.module"
 import { DialogModule } from "./core/services/dialogs/dialog.module"
+import { EffectsModule } from "@ngrx/effects"
+import { AuthenticationEffects } from "./core/store/effects/authentication.effects"
+import { StoreModule } from "@ngrx/store"
+import { combineReducers } from "./core/store/reducers"
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json')
@@ -41,9 +45,9 @@ export function createTranslateLoader(http: HttpClient) {
     ServiceModule,
     AuthenticationModule,
     GuardsModule,
-    DialogModule
-    // StoreModule.forRoot(reducers),
-    // EffectsModule.forRoot([]),
+    DialogModule,
+    StoreModule.forRoot(combineReducers),
+    EffectsModule.forRoot([AuthenticationEffects]),
   ],
   declarations: [
     AppComponent
