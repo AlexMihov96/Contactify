@@ -2,7 +2,7 @@ import { Component } from "@angular/core"
 import { BaseComponent } from "../../base.component"
 import { AuthService } from "../../../core/services/authentication/auth.service"
 import { Router } from "@angular/router"
-import { AppState } from "../../../core/store/state/app-state"
+import { RootState } from "../../../core/store/state/root-state"
 import { Store } from "@ngrx/store"
 import { selectAuthIsLoggedIn } from "../../../core/store/reducers"
 import { AuthenticationActions } from "../../../core/store/actions/authentication.actions"
@@ -18,7 +18,7 @@ export class HeaderComponent extends BaseComponent {
 
   constructor(private authService: AuthService,
               private router: Router,
-              private store$: Store<AppState>) {
+              private store$: Store<RootState>) {
     super()
 
     this.store$.select(selectAuthIsLoggedIn)

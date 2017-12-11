@@ -1,18 +1,20 @@
 <div class="container-fluid">
   <div class="row margin-top-30">
     <div class="pull-left col-md-offset-1 col-xs-offset-1 col-lg-offset-1 col-xs-2 col-md-2 col-lg-2 ">
-      <profile></profile>
+      <profile-sidebar></profile-sidebar>
     </div>
     <div class="col-md-5 col-xs-5 col-lg-5">
       <div class="row">
-        <div class="col-md-10 col-lg-10 col-xs-10">
-          <input class="form-control" [(ngModel)]="postMessage" type="text"
-                 placeholder="Would you like to tell us something?">
-        </div>
-        <div class="col-md-2 col-xs-2 col-lg-2 col-xs-2">
-          <button type="submit" class="btn btn-block btn-primary" (click)="post(postMessage)" title="Send"><span
-            class="glyphicon glyphicon-send"></span></button>
-        </div>
+        <form>
+          <div class="col-md-10 col-lg-10 col-xs-10">
+            <input class="form-control" name="message" [(ngModel)]="postMessage" type="text"
+                   placeholder="Would you like to tell us something?">
+          </div>
+          <div class="col-md-2 col-xs-2 col-lg-2 col-xs-2">
+            <button type="submit" class="btn btn-block btn-primary" (click)="post()" title="Send"><span
+              class="glyphicon glyphicon-send"></span></button>
+          </div>
+        </form>
       </div>
       <div class="row">
         <div class="col-md-12 col-lg-12 col-xs-12">
@@ -20,7 +22,8 @@
             <div class="row">
               <div class="col-md-12 col-lg-12 col-xs-12">
                 <div class="post-names-text">
-                  <a>@{{post.username}}</a> - {{post.creationDate | date: 'd MMM H:mm'}}
+                  <a [routerLink]="['/profile', userId]">@{{post.username}}</a> - {{post.creationDate | date: 'd
+                  MMM H:mm'}}
                   <div class="post-action-more">
                     <div class="dropdown">
                       <button class="dropdown-toggle" type="submit" aria-haspopup="true" title="More">

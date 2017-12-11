@@ -4,7 +4,7 @@ import { RegisterUserInputModel } from "../../../core/models/input-models/regist
 import { Router } from "@angular/router"
 import { AuthService } from "../../../core/services"
 import { ToastrService } from "../../../core/services/dialogs/toast.service"
-import { AppState } from "../../../core/store/state/app-state"
+import { RootState } from "../../../core/store/state/root-state"
 import { Store } from "@ngrx/store"
 import { AuthenticationActions } from "../../../core/store/actions/authentication.actions"
 
@@ -18,7 +18,7 @@ export class RegisterComponent extends BaseComponent {
   constructor(private authService: AuthService,
               private router: Router,
               private toastr: ToastrService,
-              private store$: Store<AppState>) {
+              private store$: Store<RootState>) {
     super()
   }
 

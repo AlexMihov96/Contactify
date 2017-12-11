@@ -15,7 +15,7 @@ namespace Contactify.Services.Services
         {
         }
 
-        public IQueryable<CreatedPostViewModel> CreatePost(string postMessage, int userId)
+        public CreatedPostViewModel CreatePost(string postMessage, int userId)
         {
             base.CheckModelForNull(postMessage);
 
@@ -29,15 +29,17 @@ namespace Contactify.Services.Services
             this.Data.Post.Add(post);
             this.Data.SaveChanges();
 
-            var createdPost = this.Data.Post.Query().OrderByDescending(p => p.Id).Select(CreatedPostViewModel.Bind);
+            var createdPost = this.Data.Post.Query().OrderByDescending(p => p.Id)
+                .Select(CreatedPostViewModel.Bind)
+                .FirstOrDefault();
 
             return createdPost;
         }
 
-        public IQueryable<CreatedPostViewModel> GetTenLatestPosts()
+        public IQueryable<CreatedPostViewModel> GetAllPosts()
         {
             var latestPosts = this.Data.Post.Query()
-                .OrderByDescending(p => p.Id)
+                .OrderByDescending(p => p.CreationDate)
                 .Select(CreatedPostViewModel.Bind);
 
             return latestPosts;

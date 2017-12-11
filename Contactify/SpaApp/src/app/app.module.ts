@@ -16,9 +16,13 @@ import { AuthenticationModule } from "./components/authentication/authentication
 import { GuardsModule } from "./core/guards/guards.module"
 import { DialogModule } from "./core/services/dialogs/dialog.module"
 import { EffectsModule } from "@ngrx/effects"
-import { AuthenticationEffects } from "./core/store/effects/authentication.effects"
 import { StoreModule } from "@ngrx/store"
-import { combineReducers } from "./core/store/reducers"
+import { AuthenticationEffects } from "./core/store/effects/authentication.effects"
+import { combineRootReducers } from "./core/store/reducers"
+import { profileComponents } from "./components/profile"
+import { NewsFeedEffects } from "./core/store/effects/news-feed.effects"
+import { NewsFeedService } from "./core/services/time-line/news-feed/news-feed.service"
+import { ProfileService } from "./core/services/time-line/profile/profile.service"
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json')
@@ -46,13 +50,19 @@ export function createTranslateLoader(http: HttpClient) {
     AuthenticationModule,
     GuardsModule,
     DialogModule,
-    StoreModule.forRoot(combineReducers),
-    EffectsModule.forRoot([AuthenticationEffects]),
+    StoreModule.forRoot(combineRootReducers),
+    EffectsModule.forRoot([
+      AuthenticationEffects,
+      NewsFeedEffects
+    ]),
   ],
   declarations: [
-    AppComponent
+    AppComponent,
+    ...profileComponents
   ],
-  providers: [],
+  providers: [ ProfileService,
+    NewsFeedService
+  ],
   bootstrap: [AppComponent]
 })
 

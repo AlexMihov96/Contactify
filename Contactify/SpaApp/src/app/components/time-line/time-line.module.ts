@@ -4,8 +4,6 @@ import { RouterModule } from "@angular/router"
 import { TranslateModule } from "@ngx-translate/core"
 import { CommonModule } from "@angular/common"
 import { FormsModule, ReactiveFormsModule } from "@angular/forms"
-import { ProfileService } from "../../core/services/time-line/profile/profile.service"
-import { NewsFeedService } from "../../core/services/time-line/news-feed/news-feed.service"
 import { timeLineRouting } from "./time-line.routing"
 
 @NgModule({
@@ -18,10 +16,7 @@ import { timeLineRouting } from "./time-line.routing"
   ],
   declarations: [...timeLineComponents],
   exports: [...timeLineComponents],
-  providers: [
-    ProfileService,
-    NewsFeedService
-  ]
+  providers: []
 })
 
 export class TimeLineModule {

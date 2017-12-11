@@ -11,15 +11,19 @@
     </div>
   </div>
   <div class="row">
-    <div class="text-center">
-      <div class="col-md-4 text-format">Followers: 0</div>
-      <div class="col-md-4 text-format">Following: 0</div>
+    <div class="col-sm-12 ">
+      <div class="col-sm-6">
+        <h4 class="text-format">Following: 5</h4>
+      </div>
+      <div class="col-sm-6">
+        <h4 class="text-format">Followers: 2</h4>
+      </div>
     </div>
   </div>
   <div class="profile-usermenu text-format">
     <ul class="nav">
       <li>
-        <a>
+        <a [routerLink]="['/profile', userId]">
           <i class="glyphicon glyphicon-user"></i>
           Account Settings </a>
       </li>

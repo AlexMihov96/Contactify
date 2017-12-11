@@ -21,7 +21,8 @@ export function reducer(state = initialState, action: AuthenticationActions.Acti
 
       const token = jwtDecode(authData.access_token)
       window.localStorage.setItem("token_expiration", JSON.stringify(token.exp))
-debugger
+      //TODO: Find a better way to store user Id !
+      window.localStorage.setItem("userId", JSON.stringify(token.id))
       return Object.assign({}, state, {
         token: authData.access_token,
         tokenExpiration: token.exp,
@@ -29,18 +30,14 @@ debugger
         user: {
           id: token.id,
           fullName: token.username,
-          userRole: token.role,
-          address: token.address,
-          firstName: token.firstName,
-          lastName: token.lastName,
-          avatar: token.avatar,
-          phoneNumber: ''
+          userRole: token.role
         }
       })
 
     case AuthenticationActions.LOGOUT:
       window.localStorage.removeItem("token")
       window.localStorage.removeItem("token_expiration")
+      window.localStorage.removeItem("userId")
 
       return Object.assign({}, state, {
         token: null,

@@ -5,8 +5,8 @@ namespace Contactify.Services.Interfaces
 {
     public interface IPostService
     {
-        IQueryable<CreatedPostViewModel> CreatePost(string postMessage, int userId);
+        CreatedPostViewModel CreatePost(string postMessage, int userId);
 
-        IQueryable<CreatedPostViewModel> GetTenLatestPosts();
+        IQueryable<CreatedPostViewModel> GetAllPosts();
     }
 }

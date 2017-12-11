@@ -35,7 +35,7 @@ namespace Contactify.Controllers
         {
             try
             {
-                var latestPosts = this.postService.GetTenLatestPosts();
+                var latestPosts = this.postService.GetAllPosts();
 
                 return this.Ok(latestPosts);
             }

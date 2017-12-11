@@ -16,7 +16,7 @@ export class NewsFeedService {
     return this.httpClient.post('post/create-post/' + userId, body)
   }
 
-  public getTenLatestPosts(): Observable<UserPostsViewModel[]> {
+  public getAllPosts(): Observable<UserPostsViewModel[]> {
     return this.httpClient.get('post/get-ten-latest-posts')
   }
 }

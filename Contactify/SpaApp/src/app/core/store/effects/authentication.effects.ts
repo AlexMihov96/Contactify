@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/mergeMap'
 import 'rxjs/add/operator/do'
 import { AuthService } from "../../services"
-import { AppState } from "../state/app-state"
+import { RootState } from "../state/root-state"
 import { ToastrService } from "../../services/dialogs"
 import { AuthenticationActions } from "../actions/authentication.actions"
 import { selectAuthRedirectUrl } from "../reducers"
@@ -18,7 +18,7 @@ export class AuthenticationEffects {
   constructor(private authService: AuthService,
               private actions$: Actions,
               private router: Router,
-              private store$: Store<AppState>,
+              private store$: Store<RootState>,
               private toastr: ToastrService) {
   }
 

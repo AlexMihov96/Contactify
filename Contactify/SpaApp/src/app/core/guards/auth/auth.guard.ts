@@ -2,7 +2,7 @@ import "rxjs/add/operator/let"
 import { Injectable } from "@angular/core"
 import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterStateSnapshot } from "@angular/router"
 import { Store } from "@ngrx/store"
-import { AppState } from "../../store/state/app-state"
+import { RootState } from "../../store/state/root-state"
 import { selectAuthIsLoggedIn } from "../../store/reducers"
 import { AuthenticationActions } from "../../store/actions/authentication.actions"
 
@@ -12,7 +12,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
   private isLoggedIn: boolean = false
 
   constructor(private router: Router,
-              private store$: Store<AppState>) {
+              private store$: Store<RootState>) {
     this.store$
       .select<boolean>(selectAuthIsLoggedIn)
       .subscribe((isLoggedIn: boolean) => this.isLoggedIn = isLoggedIn)

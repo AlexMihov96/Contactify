@@ -2,7 +2,7 @@ import { Component } from "@angular/core"
 import { BaseComponent } from "../../base.component"
 import { HttpClientService } from "../../../core/services"
 import { Store } from "@ngrx/store"
-import { AppState } from "../../../core/store/state/app-state"
+import { RootState } from "../../../core/store/state/root-state"
 import { AuthenticationActions } from "../../../core/store/actions/authentication.actions"
 
 @Component({
@@ -17,7 +17,7 @@ export class LoginComponent extends BaseComponent {
   } = {username: '', password: ''}
 
   constructor(private http: HttpClientService,
-              private store$: Store<AppState>) {
+              private store$: Store<RootState>) {
     super()
   }
 
