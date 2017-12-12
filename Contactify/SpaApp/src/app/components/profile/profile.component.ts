@@ -16,6 +16,5 @@ export class ProfileComponent extends BaseComponent {
   }
 
   ngOnInit() {
-
   }
 }

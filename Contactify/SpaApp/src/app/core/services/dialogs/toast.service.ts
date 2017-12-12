@@ -10,19 +10,19 @@ export class ToastrService {
   }
 
   public showSuccess(msg: string, translate: boolean = true): void {
-    this.showNotification('success', 'general.success', msg, translate)
+    this.showNotification('success', 'Success', msg, translate)
   }
 
   public showInfo(msg: string, translate: boolean = true): void {
-    this.showNotification('info', 'general.info', msg, translate)
+    this.showNotification('info', 'Info', msg, translate)
   }
 
   public showWarning(msg: string, translate: boolean = true): void {
-    this.showNotification('warning', 'general.warning', msg, translate)
+    this.showNotification('warning', 'Caution', msg, translate)
   }
 
   public showError(msg: string, translate: boolean = true): void {
-    this.showNotification('error', 'general.alert', msg, translate)
+    this.showNotification('error', 'Alert', msg, translate)
   }
 
   private showNotification(toastrMethodName: string, translateTitleStr: string, msg: string, translateMsg: boolean): void {

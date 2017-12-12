@@ -13,5 +13,7 @@ export const appRoutes: Routes = [
   {path: 'login', component: LoginComponent, canActivate: [IsLoggedGuard]},
   {path: 'register', component: RegisterComponent, canActivate: [IsLoggedGuard]},
 
+  {path: 'help', loadChildren: './components/help/help.module#HelpModule'},
+
   {path: '**', component: NotFoundComponent}
 ]

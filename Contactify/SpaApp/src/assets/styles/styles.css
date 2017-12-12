@@ -9,6 +9,14 @@ body {
   overflow-x: hidden;
 }
 
+textarea {
+  resize: none;
+}
+
+li {
+  list-style-type: none
+}
+
 button {
   background: transparent;
   border: none;
@@ -75,6 +83,24 @@ a:hover {
   border-bottom-color: #029587;
 }
 
+.card {
+  padding: 20px;
+  color: #ffffff;
+  margin: 50px;
+  background: #029587;
+  border-bottom: 3px solid #029587;
+}
+
+.mouse-pointer {
+  cursor: pointer;
+}
+
+.card:hover {
+  border-bottom: 5px solid #029587;
+  color: #029587;
+  background: #ffffff;
+}
+
 /*Custom classes*/
 .margin-top-30 {
   margin-top: 30px;
@@ -112,6 +138,23 @@ a:hover {
   font-size: 1em;
   color: #6f6f6f;
   font-family: "Yu Gothic UI Semibold";
+}
+
+.text-format-large {
+  font-size: 2em;
+  font-family: "Yu Gothic UI Semibold";
+}
+
+.text-secondary {
+  color: #6f6f6f;
+}
+
+.glyphicon-flag {
+  font-size: 15em;
+}
+
+.glyphicon-duplicate {
+  font-size: 15em;
 }
 
 .text-icons {

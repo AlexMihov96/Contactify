@@ -67,7 +67,7 @@ export class AuthenticationEffects {
   @Effect({dispatch: false}) routeNotAuthorized$: Observable<Action> = this.actions$
     .ofType(AuthenticationActions.ROUTE_NOT_AUTHORIZED)
     .do(action => {
-      this.toastr.showInfo('general.sessionExpired')
+      this.toastr.showInfo('Session Expired')
       this.router.navigate(['login'])
     })
 }
