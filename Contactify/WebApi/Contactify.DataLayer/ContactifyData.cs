@@ -91,6 +91,14 @@ namespace Contactify.DataLayer
             }
         }
 
+        public IRepository<Report> Reports
+        {
+            get
+            {
+                return this.GetRepository<Report>();
+            }
+        }
+
         public IRepository<ApplicationUser> ApplicationUser
         {
             get

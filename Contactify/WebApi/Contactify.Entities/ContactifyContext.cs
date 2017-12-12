@@ -28,6 +28,8 @@ namespace Contactify.Entities
 
         public DbSet<Share> Share { get; set; }
 
+        public DbSet<Report> Reports { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

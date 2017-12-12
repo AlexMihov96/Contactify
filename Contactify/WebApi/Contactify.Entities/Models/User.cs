@@ -12,6 +12,7 @@ namespace Contactify.Entities.Models
             this.SenderMessageHeader = new List<MessageHeader>();
             this.ReceiverMessageHeader = new List<MessageHeader>();
             this.Posts = new List<Post>();
+            this.Reports = new List<Report>();
         }
 
         [Key]
@@ -57,5 +58,7 @@ namespace Contactify.Entities.Models
         public virtual ICollection<MessageHeader> ReceiverMessageHeader { get; set; }
 
         public virtual ICollection<Message> Messages { get; set; }
+
+        public virtual ICollection<Report> Reports { get; set; }
     }
 }

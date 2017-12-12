@@ -71,6 +71,7 @@ namespace Contactify
             services.AddTransient<IDatabaseInitializer, DatabaseInitializer>();
             services.AddTransient<IProfileService, ProfileService>();
             services.AddTransient<IPostService, PostService>();
+            services.AddTransient<IReportService, ReportService>();
 
             services.Configure<MvcOptions>(options =>
             {

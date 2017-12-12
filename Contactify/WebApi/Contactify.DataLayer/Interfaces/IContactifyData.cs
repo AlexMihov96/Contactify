@@ -24,6 +24,8 @@ namespace Contactify.DataLayer.Interfaces
 
         IRepository<ApplicationUser> ApplicationUser { get; }
 
+        IRepository<Report> Reports { get; }
+
         int SaveChanges();
 
         int ExecuteSqlCommand(string command);
